@@ -1,0 +1,87 @@
+\chapter{Work packages, schedule and budget}
+			
+			\section{Costs}
+			
+			\subsection{Estimation}
+			
+			To calculate an estimation of costs, the COCOMO algorithm developed by Barry Boehm
+			will be used. Depending on the number of lines of code, the costs and efforts of this
+			project can be computed. Off course, this is just an estimation and will differ from
+			reality. The algorithm provides next formulas in order to calculate the effort and
+			cost:
+			
+			\begin{center}
+			Effort Applied: $ E = a \cdot (KLOC)^{b} $ \\
+			Development Time: $ D = c \cdot E^{d} $ \\
+			People required: $ P = \frac{E}{D} $ \\
+			\end{center}
+			
+			KLOC is the estimation of the code length expressed in thousands of lines of code.
+			Our project can be classified as a semi-detached project which means that our team of
+			a medium size has a mixed experience working with a mix of rigid and less than rigid
+			requirements. Therefore, the parameters a, b, c, d are defined as in table \ref{par}. 		
+			
+			
+			\begin{table}
+				\begin{center}
+			\begin{tabular}{l l}
+				\FL Parameter & Value
+				\ML a & 3.0
+				\NN b & 1.12
+				\NN c & 2.5
+				\NN d & 0.35
+			\end{tabular}
+				\end{center}
+				\caption{COCOMO Parameters for a semi-detached project}
+				\label{par}
+			\end{table}	
+			
+			By analyzing simular projects, we estimate to write 10KLOC. This brings the total
+			effort to:
+			
+			\begin{center}
+				$ E = 3.0 \cdot 10^{1.12} \approx 39,55 $ man-months
+			\end{center}
+			
+			The total development time thus becomes:
+			
+			\begin{center}
+				$ D = 2,5 \cdot 39,55^{0,35} \approx 9,06 $ months
+			\end{center}
+			
+			This results in a total staff estimation of
+			
+				\[ P = \frac{39,55 \textrm{ man-months}}{9,06 \textrm{ months}} \approx 4,37 \textrm{ people} \]
+			
+			Using the COCOMO algorithm, we can thus conclude that 4,37 people are needed to
+			realise our project in 9,06 months. 
+			
+			In our case however, we can rely on 7 people. Assuming we will have 27 weeks in order
+			to achieve our goals, and a month accounts 4,3 weeks, the total development time
+			can be calculated as:
+				\[ E = 7 \textrm{ people} \times \frac{27 \textrm{ weeks}}{4,3 \textrm{ weeks/months}} \approx 43,95 \textrm{ man-months} \] 
+			
+			This means that we have more time to realise the project than needed
+			according to the estimation. 
+			
+			\subsection{Real costs}
+			
+			
+			
+			\section {Dependencies}
+			
+			At this time, it is only possible to provide 1 general dependency :
+			
+			\begin{itemize}
+				
+				\item Iteration 2 depends on the completion of iteration 1.
+				
+			\end{itemize}
+			
+			
+			\section{Planning}	
+				
+			
+			
+			
+	
