@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, italian]{report}
+\documentclass[a4paper, 12pt, italian, utf8]{report}
 \usepackage{ctable}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
@@ -51,6 +51,13 @@ Versione 1.0\\[1cm]
 	\input{ProjectOrganization}
 	\input{ManagerialProcess}
 	\input{TechnicalProcess}
+<<<<<<< HEAD
+	\input{WorkElements}
+	
+	
+\end{document}
+=======
 	\input{WorkElements}	
 	\input{AnalisiRischi}
 \end{document}
+>>>>>>> 240ad6c92dbc9b64862fc5a5d743d24006f43026
