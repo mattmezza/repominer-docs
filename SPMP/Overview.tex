@@ -5,19 +5,25 @@ L'obiettivo del progetto è quello di aggiungere al framework RepoMiner un'esten
 \section{Assunzioni e vincoli}
 RepoMinerEvo sarà realizzato come estensione del progetto RepoMiner, scritto in Java. Si assume che il progetto originario funzioni correttamente; questo sarà gestito ed evolverà indipendentemente da RepoMinerEvo.
 
-Un vincolo, dettato dalla necessità di permettere a tutti i componenti del team di svolgere l'esame liberamente, è di completare il progetto entro il 23 giugno 2014. 
+Un vincolo, dettato dalla necessità di permettere a tutti i componenti del team di svolgere l'esame, è di completare il progetto entro il 13 luglio 2014. 
 \begin{table}[b]
 	\begin{tabular}{|c|c|c|}
 	\hline
 	\textbf{Nome risorsa} & \textbf{Tipologia} & \textbf{Attività}\\
 	\hline
-	Computer	& Hardware	& Redazione di documenti e scrittura di codice\\
+	Computer		& Hardware	& Redazione di documenti e scrittura di codice\\
 	\hline
-	Subversion	& Software	& Gestione delle versioni\\
+	Subversion		& Software	& Gestione delle versioni del codice\\
 	\hline
-	Eclipse		& Software	& Implementazione del codice\\
+	Draw.io			& Software	& Diagrammi UML\\
 	\hline
-	Editor \LaTeX & Software& Redazione documenti\\
+	GanttProject	& Software	& Diagrammi Gantt\\
+	\hline
+	Eclipse			& Software	& Implementazione del codice\\
+	\hline
+	Editor \LaTeX 	& Software	& Redazione documenti\\
+	\hline
+	Git		 		& Software 	& Gestione delle versioni della documentazione\\
 	\hline
 	\end{tabular}
 	\caption{Risorse hardware/software}
@@ -27,48 +33,52 @@ Un vincolo, dettato dalla necessità di permettere a tutti i componenti del team
 In questa sezione sono indicate le risorse hardware e software necessarie allo sviluppo del progetto. La tabella \ref{overview:risorsehwsw} mostra l'elenco delle risorse che si prevede di utilizzare, con le relative attività a cui sono legate.
 
 \section{Stima dei costi del progetto}
-Si stima che il budget necessario per completare il progetto sia di 134 ore/uomo. Si prevede che lo sforzo sarà così ripartito:\\
+Si stima che il budget necessario per completare il progetto sia di 570 ore/uomo. Si prevede che lo sforzo sarà così ripartito:\\
 \begin{itemize}
-\item Analisi dei requisiti: 12h
-\item Impact analysis: 10h
-\item Object design: 18h
-\item Implementazione: 30h
-\item Testing: 40h
-\item Meeting: 12h
-\item Studio degli articoli scientifici forniti: 12h
+\item Analisi dei requisiti: 50h
+\item Impact analysis: 30h
+\item Object design: 90h
+\item Implementazione: 150h
+\item Testing: 220h
+\item Meeting: 20h
+\item Studio degli articoli scientifici forniti: 10h
 \end{itemize}
 
 Si provvederà ad una correzione di tali stime nei report di management.
 
 \section{Deliverable del progetto}
-I deliverable che saranno prodotti durante il progetto sono riportati nella tabella \ref{overview:deliverable}. Per RAD e SDD si farà riferimento alla documentazione esistente.
+I deliverable che saranno prodotti durante il progetto sono riportati nella tabella \ref{overview:deliverable}. Per RAD e SDD si farà riferimento alla documentazione esistente.\\
+La responsabilità della revisione dei deliverable è sempre di tutto il team; sono però qui specificati i componenti del team che provvederanno maggiormente alla creazione e al mantenimento di determinati artefatti. Le sigle indicano le iniziali (nome e cognome).
 
 \begin{table}[b]
 	\begin{tabular}{|c|c|c|c|}
 	\hline
-	\textbf{Codice} & \textbf{Nome} & \textbf{Responsabilità} & \textbf{Data di consegna}\\
+	\textbf{Codice} & \textbf{Nome} & \textbf{Responsabilità} & \textbf{Scadenza}\\
 	\hline
-	DL1	& SPMP				& Tutti			 & 15/05/2014\\
+	DL1	& SPMP						& Tutti			& 15/05/2014\\
 	\hline
-	DL2	& Analisi Requisiti	& Tutti			 & 19/05/2014\\
+	DL2	& Analisi Requisiti			& Tutti			& 19/05/2014\\
 	\hline
-	DL3	& ODD				& Tutti			 & 24/05/2014\\
+	DL3	& ODD						& MM e GG		& 9/07/2014\\
 	\hline
-	DL4 & Test plan			& ???			 & 1/06/2014\\
+	DL4 & Test Plan					& CB e SS		& 27/05/2014\\
 	\hline
-	DL5 & Codice sorgente (1)& ???			 & 1/06/2014\\
+	DL5 & Test Case Specification	& CB e SS	 	& 1/06/2014\\
 	\hline
-	DL6 & Test reports (1)	& ???			 & 7/06/2014\\
+	DL6 & Codice sorgente (1)		& MM e GG		& 31/05/2014\\
 	\hline
-	DL7 & Codice sorgente (2)& ???			 & 7/06/2014\\
+	DL7 & Test reports (1)			& CB e SS		& 5/06/2014\\
 	\hline
-	DL8 & Test reports (2)	& ???			 & 14/06/2014\\
+	DL8 & Codice sorgente (2)		& MM e GG		& 9/06/2014\\
 	\hline
-	DL9 & Codice sorgente (3)& ???			 & 14/06/2014\\
+	DL9 & Test reports (2)			& MM e GG		& 28/06/2014\\
 	\hline
-	DL10& Test reports (3)	& ???			 & 21/06/2014\\
+	DL10& Codice sorgente (3)		& CB e SS		& 2/07/2014\\
+	\hline
+	DL11& Test reports (3)			& CB e SS		& 7/07/2014\\
 	\hline
 	\end{tabular}
-	\caption{Deliverable del progetto}
+	\caption{Deliverable del progetto. I numeri \emph{1, 2 e 3} tra parentesi si riferiscono 
+			all'incremento in cui saranno creati quei deliverable.}
 	\label{overview:deliverable}
 \end{table}
