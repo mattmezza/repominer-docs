@@ -8,6 +8,12 @@
 \usepackage{amsmath}
 \usepackage[italian]{babel}
 
+\usepackage[raggedright]{titlesec}
+\usepackage{blindtext}
+
+\titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
+\titlelabel{\thetitle.\quad}   % For consistency in all headings
+
 \begin{document}
 \begin{titlepage}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
