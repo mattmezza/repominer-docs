@@ -1,8 +1,48 @@
 \chapter{Scheduling delle attività}
 \section{Tabella di scheduling}
-%
-%	tabella di scheduling
-%
+La tabella \ref{activity:scheduling} mostra lo scheduling delle macro-attività previsto.
+
+\newcolumntype{C}[1]{>{\centering}p{#1}}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|C{2cm}|C{3cm}|C{2cm}|C{2cm}|C{2.5cm}|}
+	\hline
+	\textbf{Codice attività}	& \textbf{Nome attività}	& \textbf{Data inizio}	& \textbf{Data fine}		& \textbf{Codici deliverable}\tabularnewline
+	\hline
+	
+	AC0		&	Analisi					&	15/05/2014	&	19/05/2014	& DL2\tabularnewline
+	
+	\hline
+	
+	AC1		&	Pianificazione testing	&	20/05/2014	&	1/06/2014	& DL4, DL5\tabularnewline
+	
+	\hline
+	
+	AC3		&	ODD						&	20/05/2014	&	9/07/2014	& DL3\tabularnewline
+	
+	\hline
+	
+	AC4		&	Primo incremento		&	20/05/2014	&	5/06/2014	& DL6, DL7\tabularnewline
+	
+	\hline
+	
+	AC5		&	Secondo incremento		&	 1/06/2014	&	28/06/2014	& DL8, DL9\tabularnewline
+	
+	\hline
+	
+	AC6		&	Terzo incremento		&	23/06/2014	&	7/07/2014	& DL10, DL11\tabularnewline
+	
+	\hline
+	
+	AC7		&	Management				&	28/04/2014	&	13/07/2014	& DL1, DL12\tabularnewline
+	
+	\hline
+	\end{tabular}
+	
+	\caption{Scheduling delle attività}
+	\label{activity:scheduling}
+\end{table}
+
 \clearpage
 \section{Work Breakdown Structure (WBS)}
 In questa sezione è presentata la WBS del progetto e le WBS dettagliate per RAD, ODD e documentazione di testing; in particolare, per le WBS della documentazione vengono presentati due formati: l'org-chart format e l'outline format.
