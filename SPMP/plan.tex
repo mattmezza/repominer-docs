@@ -8,6 +8,10 @@
 \usepackage{amsmath}
 \usepackage[italian]{babel}
 
+\usepackage{chngcntr}
+\counterwithin*{figure}{chapter}
+\renewcommand{\thefigure}{\thechapter.\Roman{figure}}
+
 \begin{document}
 \begin{titlepage}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
@@ -47,6 +51,8 @@ Versione 1.0\\[1cm]
 \end{titlepage}	
 	\setcounter{tocdepth}{1}	
 	\tableofcontents
+	\listoffigures
+	\listoftables
 	
 	\input{Introduction}
 	\input{Overview}
