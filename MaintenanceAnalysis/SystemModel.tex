@@ -1,21 +1,22 @@
 \chapter{System Model}
 \section{Use Case Models}
 
+%template caso d'uso
 \begin{usecase}
-
-\addtitle{Lol}{lol}
-\addfield{ID:}{UC QualityMetricsExtractor}
+\addtitle{Nome Use Case}{Calcolo metriche}
+\addfield{ID:}{UC\_QualityMetricsExtractor\_0.1}
 \addfield{Partecipanti:}{Sviluppatore}
-\addfield{Nome Use Case:}{Calcolo metriche}
 \addfield{Condizioni di ingresso:}{Lo sviluppatore avvia la IDE "Eclipse"}
 \addscenario{Flusso di eventi:}{
-	\item The first action
-	\item The second action
+	\item Lo sviluppatore avvia il tool tramite il tasto "run".
+	\item "SIE" apre una finestra della IDE mostrando sulla sinistra la lista dei progetti che è possibile analizzare.
+	\item Lo sviluppatore seleziona il progetto, e da' avvio al programma.
+	\item "SIE" notifica l'avvenuto calcolo delle metriche tramite un messaggio che compare in console.
 }
 \addfield{Condizioni di uscita:}{
 	\begin{enumerate}
-	\item[1.] Il sistema memorizza i dati
-	\item[2.] Lo sviluppatore termina precocemente l operazione di calcolo
+	\item[1.] Il sistema memorizza i dati.
+	\item[2.] Lo sviluppatore termina precocemente l'operazione di calcolo.
 	\end{enumerate}
 }
 \addfield{Eccezioni:}{Errore di sistema}
