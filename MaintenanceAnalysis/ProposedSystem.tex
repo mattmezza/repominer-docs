@@ -1,2 +1,25 @@
 \chapter{Sistema proposto}
 \section{Requisiti funzionali}
+Il sistema deve essere in grado di calcolare metriche relative all'entropia di un progetto software.
+
+Più in particolare, dovrà essere possibile calcolare le seguenti metriche basilari:
+\begin{itemize}
+\item Numero di revisioni del sistema;
+\item Numero medio di volte in cui i file di un package hanno subito
+cambiamenti;
+\item Numero medio di volte in cui i file di un package hanno subito operazioni
+di refactoring;
+\item Numero medio di volte in cui i file di un package hanno subito operazioni di
+bug fixing;
+\item Numero di autori di commit effettuati all’interno di un package;
+\item Numero di linee aggiunte o rimosse (somma, media e massimo);
+\item Dimensione media dei file modificati.
+\end{itemize}
+
+Il sistema dovrà implementare il Basic Code Change Model descritto nell'articolo di Hassan \cite{hassan2009predicting}. Dovranno essere implementate, quindi, le seguenti metriche:
+\begin{itemize}
+\item Numero di cambiamenti totali di ogni file (righe aggiunte + righe cancellate) di un dato progetto software a seguito di aggiunta di feature (FI) in un periodo di riferimento (es: un mese); per distinguerle dovranno essere analizzati i messaggi di commit: quelli che non contengono parole come "bug-fix", "re-indent", "copyright update", etc. sono da classificare come FI.
+\item Entropia dei cambiamenti dei file del progetto in un periodo di riferimento fissato (es: un mese)
+\end{itemize}
+
+Il sistema dovrà implementare l'Extended Code Change Model descritto nell'articolo di Hassan \cite{hassan2009predicting}; dovranno essere implementate, dunque, le seguenti metriche:
