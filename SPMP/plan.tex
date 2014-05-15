@@ -8,9 +8,11 @@
 \usepackage{amsmath}
 \usepackage[italian]{babel}
 
-\usepackage{chngcntr}
-\counterwithin*{figure}{chapter}
-\renewcommand{\thefigure}{\thechapter.\Roman{figure}}
+\usepackage[raggedright]{titlesec}
+\usepackage{blindtext}
+
+\titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
+\titlelabel{\thetitle.\quad}   % For consistency in all headings
 
 \begin{document}
 \begin{titlepage}
