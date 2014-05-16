@@ -3,16 +3,54 @@ Il presente documento si propone di fornire una rapida panoramica del progetto, 
 
 %-------SCOPO DEL SISTEMA
 \section{Scopo del sistema}
-Scopo del sistema è quello di aggiungere funzionalità nuove ad un sistema già esistente, RepoMiner. Tale sistema è in grado di analizzare codice sorgente ed estrarre da esso una serie di metriche. 
+Scopo del sistema è quello di aggiungere nuove features ad un sistema già esistente, RepoMiner. Tale sistema è in grado di analizzare codice sorgente ed estrarre da esso una serie di metriche. 
 
-Si vuol essere in grado con il sistema proposto, di sfruttare come base di conoscenza le metriche estratte da RepoMiner per calcorare il grado di entropia presente nei package di un sistema software.
+Si vuol essere in grado con il sistema proposto, di sfruttare come base di conoscenza le informazioni estratte da RepoMiner per calcorare il grado di entropia presente nei package di un sistema software. In questo senso, l'entropia può essere calcolata implementando una serie di metriche, calcolate dagli sviluppatori nell'ambito dell'evoluzione del sistema. Per una descrizione precisa di tale metriche si farà riferimento alla sezione \ref{req_fun} del presente documento. Attraverso questi parametri sarà possibile rappresentare l'informazione di un particolare package.\\
+
+Il secondo step del progetto consiste nell'implementazione del \textit{Basic Code Change Model} e nell'eventuale implementazione dell'\textit{Extended Code Change Model}, descritti nell'articolo di Hassan\cite{hassan2009predicting}. Per una descrizione più accurata di fa ancora una volta riferimento alla sezione \ref{req_fun} di tale documento.
 
 %------DEFINIZIONI, ACRONOMI, ABBREVIAZIONI
 \section{Definizioni, acronimi, abbreviazioni}
+
 \textsc{Entropia}: in meccanica statistica, l'entropia rappresenta una grandezza che viene interpretata come una misura del disordine presente in un sistema fisico, incluso, nel caso limite, l'universo. L'entropia è una funzione crescente della probabilità dello stato macroscopico di un sistema, e precisamente risulta proporzionale al logaritmo del numero delle configurazioni microscopiche possibili per quello stato macroscopico: la tendenza all'aumento dell'entropia di un sistema isolato corrisponde dunque al fatto che il sistema evolve verso gli stati macroscopici più probabili. \\
 
 \section{Panoramica}
 
-Nell'ambito dell' Ingegneria del Software, il concetto di entropia è stato applicato con successo in diversi contesti, a partire dal concetto di defect predictio
+In riferimento al ciclo di vita del software, è chiaro osservare come, una volta che il prodotto viene rilasciato, andrà in contro per forza di cose a diverse modifiche per i più svariati motivi, dalla correzione di errori all'estensione di funzionalità. Tale concetto viene espresso dalla prima legge di Lehman dulla manutenzione del software:
+\begin{center}
+\textit{un sistema deve necessariamente cambiare ed evolvere con continuità per mantenere intatto il suo livello di utilità, stante i continui cambiamenti che avvengono nell'ambiente in cui il sistema opera}.
+\end{center}
+Quando un sistema cambia, per qualsivoglia motivo, la tua struttura tende a diventare più complessa. Diventa necessario utilizzare risorse supplementari per preservarne la qualità della struttura. Assume importanza estrema quindi il monitorare la qualità del codice attraverso l'utilizzo di metriche.\\
 
+Nell'Ingegneria del software, la predizione dei faults è stata sempre comunemente associata a misurazioni di complessità. Il concetto di entropia più essere applicato con successo in diversi contesti, a partire dal concetto di defect prediction. L'idea di base è quella di proporre metriche complesse che sono basate sul processo di cambiamento del codice invece che sul codice stesso. Si può ragionevolemente congetturare come, un processo di cambiamento  complesso e disomogeneo, possa affliggere negativamente un sistema software. 
+
+Proprio come strumento per quantificare la complessità ritorna utile il concetto di entropia di Shannon. A partire da queste informazioni è possibile andare ad implementare due modelli per la complessità dei cambiamenti sul codice; il \textit{Basic Code Change Model} e un modello più elaborato e complesso, il \textit{Extended Code Change Model}. Entrambi questi modelli vanno a calcolare un singolo valore che misura la complessità complessiva dei cambiamenti di un progetto durante un periodo di tempo stabilito. 
+
+Come mostrato nel caso di studio svolto nel lavoro di Hassan \cite{hassan2009predicting}, tali metriche basate sulla complessità dei cambiamenti si rivelavano estremamente valide nella defeat prediction.
 \section{Sistema corrente}
+RepoMiner è un lavoro di tesi triennale sviluppato da alcuni studenti dell'Univerisità degli Studi di Salerno. RepoMiner offre alcuni strumenti per la raccolta automatica di informazioni da un specifica repository. L'architettura del sistema si compone di tre moduli fondamentali. \\
+
+\textbf{QualityMetricsExtractor}: si occupa di analizzare il codice sorgente per estrarre una serie di specifiche metriche sodtware. Abbiamo la possibilità di estrarre quindi informazioni su classi, dimensione, dipendenze. Tale modulo è composto da un parse java e da un estrattore di metriche che utilizza i dati forniti dal parser per calcolare alcune metriche di qualità del software:
+\begin{itemize}
+\item Lines Od Code (LOC): calcola il numero di linee di codice per una data classe;
+\item Cyclomatic Complexity (CC): calcola la complessità di una data classe considerando le sue strutture di controllo;
+\item Lack of Cohesion of Methods (LCOM): calcola la coesione della classe considerando il numero di variabili che i metodi condividono;
+\item Conceptual Cohesion of Class (C3): calcola la coesione concettuale di una classe;
+\item Response for a Class (RFC): esprime il numero di servizi che la classe è in grado di fornire alle altre classi;
+\item Number of Children (NOC): calcola il numero di classi figlie immediatamente sotto la classe padre nella gerarchia;
+\item Coupling Between Object Classes (CBO): calcola l'accoppiamento tra le classi di un sistema;
+\item Depth of Inheritance Tree (DIT): calcola la massima distanza di una classe dalla radice dell'albero.
+\end{itemize}
+
+\textbf{GitExtractor}: si occupa dell'estrazione di informazioni dal sistema di versioning GIT, dal quale è possibile estrarre anche i singoli cambiamenti tramite i file di log estraibili. Il tool si compone di un estrattore che scarica codice sorgente e log dei cambiamenti dal repository, e da un parser che usa il log per estrarre i contenuti di ogni singolo commit e le informazioni che comprendono classi e metodi modificati tra un commit e l'altro. In particolare, le informazioni specifiche sono le seguenti:
+\begin{itemize}
+\item Identificativo del cambiamento ;
+\item Data della modifica;
+\item Identificativo dello sviluppatore che ha apportato la modifica;
+\item Email dello sviluppatore;
+\item Commenti lasciati dallo sviluppatore;
+\item Lista di File modificati;
+\item Metodi modificati per ogni classe;
+\end{itemize}
+
+\textbf{BugZillaExtractor}: analizza i sistemi di Issue Tracker. Da qui è possibile estrarre informazioni sui bug-fixes, la data di risoluzione, gli sviluppatori coinvolti nella discussione e nella risoluzione del bug e file coinvolti. BugZillaExtractor è composto da due moduli, uno che estrrare la lista dei bug segnalati, mentre il secondo analizza questa lista per estrarre informazioni su ogni singolo bug.
