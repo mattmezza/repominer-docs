@@ -1,6 +1,14 @@
 \chapter{System Model}
 \section{Use Case Models}
 
+\subsection{UC\_QualityMetricsExtractor\_0.1}
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.6]{img/usecase1.png}
+	\caption{Use Case Diagram}\label{fig:usecase1}
+	\end{figure}
+		
 %template caso d'uso
 \begin{usecase}
 \addtitle{Nome Use Case}{Calcolo metriche}
@@ -15,8 +23,34 @@
 }
 \addfield{Condizioni di uscita:}{
 	\begin{enumerate}
-	\item[1.] Il sistema memorizza i dati.
-	\item[2.] Lo sviluppatore termina precocemente l'operazione di calcolo.
+	\item[a.] Il sistema memorizza i dati.
+	\item[b.] Lo sviluppatore termina precocemente l'operazione di calcolo.
+	\end{enumerate}
+}
+\addfield{Eccezioni:}{Errore di sistema}
+\end{usecase}
+
+\subsection{UC\_ChangeConfigSettings}
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.6]{img/usecase2.png}
+	\caption{Use Case Diagram}\label{fig:usecase1}
+	\end{figure}
+	
+\begin{usecase}
+\addtitle{Nome Use Case}{Modifica file di configurazione}
+\addfield{ID:}{UC\_ChangeConfigSettings}
+\addfield{Partecipanti:}{Sviluppatore}
+\addfield{Condizioni di ingresso:}{Il plugin è installato correttamente nell'IDE eclipse.}
+\addscenario{Flusso di eventi:}{
+	\item Lo sviluppatore apre il file settings.config con un qualsiasi editor di testo.
+	\item Lo sviluppatore configura le metriche da calcolare.
+}
+\addfield{Condizioni di uscita:}{
+	\begin{enumerate}
+	\item[a.] Il plugin è configurato per le metriche desiderate.
+	\item[b.] Lo sviluppatore ha scritto male i dati di configurazione.
 	\end{enumerate}
 }
 \addfield{Eccezioni:}{Errore di sistema}
