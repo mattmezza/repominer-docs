@@ -1,5 +1,5 @@
-\chapter{Introduction}
-Il presente documento si propone di fornire una rapida panoramica del progetto, focalizzandosi sui requisiti funzionali da implementare a partire da una base già esistente. Si provvederà a specificare un design di alto livello delle funzionalità che si andranno a raggiungere. In questo documento andrà a confluire anche tutta l'attività di impact analysis.
+\chapter{Introduzione}
+Il presente documento si propone di fornire una rapida panoramica del progetto, focalizzandosi sui requisiti funzionali da implementare a partire da una base già esistente. Si provvederà a specificare un design di alto livello delle funzionalità che si andranno ad aggiungere. In questo documento andrà a confluire anche tutta l'attività di impact analysis.
 
 %-------SCOPO DEL SISTEMA
 \section{Scopo del sistema}
@@ -18,7 +18,7 @@ Il secondo step del progetto consiste nell'implementazione del \textit{Basic Cod
 \textsc{Bug}: un bug è una fault in un programma, che fa si che il programma metta in atto un comportamento inatteso o che esegua delle operazioni non intenzionali.
 \section{Panoramica}
 
-In riferimento al ciclo di vita del software, è chiaro osservare come, una volta che il prodotto viene rilasciato, andrà in contro per forza di cose a diverse modifiche per i più svariati motivi, dalla correzione di errori all'estensione di funzionalità. Tale concetto viene espresso dalla prima legge di Lehman dulla manutenzione del software:
+In riferimento al ciclo di vita del software, è chiaro osservare come, una volta che il prodotto viene rilasciato, andrà incontro per forza di cose a diverse modifiche per i più svariati motivi, dalla correzione di errori all'estensione di funzionalità. Tale concetto viene espresso dalla prima legge di Lehman dulla manutenzione del software:
 \begin{center}
 \textit{un sistema deve necessariamente cambiare ed evolvere con continuità per mantenere intatto il suo livello di utilità, stante i continui cambiamenti che avvengono nell'ambiente in cui il sistema opera}.
 \end{center}
@@ -34,35 +34,35 @@ Occore specificare come, in questi modelli, si andranno ad analizzare solamente 
 
 Come già detto, il modello BCC utilizza un arco temporale ben specificato, e definisce, file per file, la probabilità che lo stesso subisca un cambiamento. Più le probabilità sono equamente distribuite, più alta è l'entropia del sistema software, e dunque maggiore è la probabilità di svilupare difetti. Come caso limite invece, qualora un singolo file raggiunga probabilità 1, abbiamo che l'entropia del sistema diviene minima. L'idea chiave dunque risiede nel focalizzare l'analisi sulle modifiche alla singole linee di codice lungo un intervallo di tempo, allo scopo di costruire un modello di probabilità dei cambiamenti.
 
-Quest'analisi fornisce ovviamente anche un andamento evolutivo di quella che è l'entropia del sistema lungo tutto il suo ciclo di vita. Partizionando lo stesso in periodi successivi di tempo, è interessante notare come il processo di cambiamento del codice si sia evoluto e protratto nel tempo di pari passo all'entropia dello stesso. Ciò costituisce anche un'importante parametro di monitoramento per un manager. Si è osservato come, individuando le ragioni di picchi inaspettati nell'entropia, sia possibile pianificare ed essere pronti per problemi futuri.\\
+Quest'analisi fornisce ovviamente anche un andamento evolutivo di quella che è l'entropia del sistema lungo tutto il suo ciclo di vita. Partizionando lo stesso in periodi successivi di tempo, è interessante notare come il processo di cambiamento del codice si sia evoluto e protratto nel tempo di pari passo all'entropia dello stesso. Ciò costituisce anche un'importante parametro di monitoraggio per un manager. Si è osservato come, individuando le ragioni di picchi inaspettati nell'entropia, sia possibile pianificare ed essere pronti per problemi futuri.\\
 
-Nel BCC sin qui descritto a grandi linee si assume un intervallo di tempo fissato per il calcolo dell'entropia, e siassume che il numero di file in un sistema rimanga inalterato. Ovviamente queste limitazioni restringono in campo di utilizzo di questo modello. L'\textit{Extended Code Change} va a colmare tali lacune. In particolare, per quanto riguarda l'arco di tempo da analizzare nell'evoluzione software, è possibile prendere in considerazione diverse opzioni differenti. Abbiamo già visto il criterio del \textit{time based periods}, ossia la suddivisione in parti eque dei periodi di tempo, a partire dall'inizio del progetto fino alla sua conclusione. Si crede che un periodo di periodo di un quarto di anno sia un limite di tempo ragionabile per raccogliere una frazione significativa nella crescita di un sistema. Un'altra possibilità riguarda i \textit{modification limit base periods}, ossia il suddividere il tempo in periodi basandosi sul numero di modifiche che sono memorizzare nella repository in oggetto. Per prevenire i casi in cui si verificano lunghi periodi di scarse modifiche implementative, è ragionevole imporre un limite temporale di 3 mesi qualora un periodo non raggiunga un limite fissato a 600 modifications. In conclusione, si è osservato come il processo di modifica segua delle fasi di picco, seguire da fasi di rilassamento. È sulla base di questa osservazione che è possibile la suddivisione temporale in \textit{burst based periods}.\\
+Nel BCC sin qui descritto a grandi linee si assume un intervallo di tempo fissato per il calcolo dell'entropia, e si assume che il numero di file in un sistema rimanga inalterato. Ovviamente queste limitazioni restringono in campo di utilizzo di questo modello. L'\textit{Extended Code Change} va a colmare tali lacune. In particolare, per quanto riguarda l'arco di tempo da analizzare nell'evoluzione software, è possibile prendere in considerazione diverse opzioni differenti. Abbiamo già visto il criterio del \textit{time based periods}, ossia la suddivisione in parti eque dei periodi di tempo, a partire dall'inizio del progetto fino alla sua conclusione. Si crede che un periodo di periodo di un quarto di anno sia un limite di tempo ragionevole per raccogliere una frazione significativa nella crescita di un sistema. Un'altra possibilità riguarda i \textit{modification limit base periods}, ossia il suddividere il tempo in periodi basandosi sul numero di modifiche che sono memorizzare nella repository in oggetto. Per prevenire i casi in cui si verificano lunghi periodi di scarse modifiche implementative, è ragionevole imporre un limite temporale di 3 mesi qualora un periodo non raggiunga un limite fissato a 600 modifications. In conclusione, si è osservato come il processo di modifica segua delle fasi di picco, seguire da fasi di rilassamento. È sulla base di questa osservazione che è possibile la suddivisione temporale in \textit{burst based periods}.\\
 
-Nel modello ECC è necessario definire un'entropia normalizzata, con lo scopo di comparare l'entropia di sistemi di differente dimensione, con aggiunta o rimozione di files durante i vari periodi di tempo. La \textit{normalized static entropy} \textit{H} dipene dal numero di files in un sistema. È interessante notare alcuni sistemi software annoverino alcuni files con una probabilità di cambiamento davvero bassa. Per fare in modo che questi files non riducano in maniera artificiosa l'entropia del sistema, si è definita l'\textit{adaptive sizing entropy}. L'idea di fondo è quella di dividere per il numero di linee recentemente modificate, invece per il numero attuale di linee del sistema. Vi sono due criteri di scelta per calcolare tale valore, ossia un primo criterio che prende in esame i files modificati nei precedenti \textit{x} mesi,incluso il mese corrente, mentre un secondo prevede che il set di files da analizzare includa tutti i files modificati nei precedenti \textit{x} periodi, incluso quello corrente. 
+Nel modello ECC è necessario definire un'entropia normalizzata, con lo scopo di comparare l'entropia di sistemi di differente dimensione, con aggiunta o rimozione di files durante i vari periodi di tempo. La \textit{normalized static entropy} \textit{H} dipende dal numero di files in un sistema. È interessante notare alcuni sistemi software annoverino alcuni files con una probabilità di cambiamento davvero bassa. Per fare in modo che questi files non riducano in maniera artificiosa l'entropia del sistema, si è definita l'\textit{adaptive sizing entropy}. L'idea di fondo è quella di dividere per il numero di linee recentemente modificate, invece per il numero attuale di linee del sistema. Vi sono due criteri di scelta per calcolare tale valore, ossia un primo criterio che prende in esame i files modificati nei precedenti \textit{x} mesi,incluso il mese corrente, mentre un secondo prevede che il set di files da analizzare includa tutti i files modificati nei precedenti \textit{x} periodi, incluso quello corrente. 
 \section{Sistema corrente}
 RepoMiner è un lavoro di tesi triennale sviluppato da alcuni studenti dell'Univerisità degli Studi di Salerno. RepoMiner offre alcuni strumenti per la raccolta automatica di informazioni da un specifica repository. L'architettura del sistema si compone di tre moduli fondamentali. \\
 
-\textbf{QualityMetricsExtractor}: si occupa di analizzare il codice sorgente per estrarre una serie di specifiche metriche sodtware. Abbiamo la possibilità di estrarre quindi informazioni su classi, dimensione, dipendenze. Tale modulo è composto da un parse java e da un estrattore di metriche che utilizza i dati forniti dal parser per calcolare alcune metriche di qualità del software:
+\textbf{QualityMetricsExtractor}: si occupa di analizzare il codice sorgente per estrarre una serie di specifiche metriche software. Abbiamo la possibilità di estrarre quindi informazioni su classi, dimensione, dipendenze. Tale modulo è composto da un parser java e da un estrattore di metriche che utilizza i dati forniti dal parser per calcolare alcune metriche di qualità del software:
 \begin{itemize}
-\item Lines Od Code (LOC): calcola il numero di linee di codice per una data classe;
-\item Cyclomatic Complexity (CC): calcola la complessità di una data classe considerando le sue strutture di controllo;
-\item Lack of Cohesion of Methods (LCOM): calcola la coesione della classe considerando il numero di variabili che i metodi condividono;
-\item Conceptual Cohesion of Class (C3): calcola la coesione concettuale di una classe;
-\item Response for a Class (RFC): esprime il numero di servizi che la classe è in grado di fornire alle altre classi;
-\item Number of Children (NOC): calcola il numero di classi figlie immediatamente sotto la classe padre nella gerarchia;
-\item Coupling Between Object Classes (CBO): calcola l'accoppiamento tra le classi di un sistema;
-\item Depth of Inheritance Tree (DIT): calcola la massima distanza di una classe dalla radice dell'albero.
+\item Lines Od Code (LOC): calcola il numero di linee di codice per una data classe
+\item Cyclomatic Complexity (CC): calcola la complessità di una data classe considerando le sue strutture di controllo
+\item Lack of Cohesion of Methods (LCOM): calcola la coesione della classe considerando il numero di variabili che i metodi condividono
+\item Conceptual Cohesion of Class (C3): calcola la coesione concettuale di una classe
+\item Response for a Class (RFC): esprime il numero di servizi che la classe è in grado di fornire alle altre classi
+\item Number of Children (NOC): calcola il numero di classi figlie immediatamente sotto la classe padre nella gerarchia
+\item Coupling Between Object Classes (CBO): calcola l'accoppiamento tra le classi di un sistema
+\item Depth of Inheritance Tree (DIT): calcola la massima distanza di una classe dalla radice dell'albero
 \end{itemize}
 
 \textbf{GitExtractor}: si occupa dell'estrazione di informazioni dal sistema di versioning GIT, dal quale è possibile estrarre anche i singoli cambiamenti tramite i file di log estraibili. Il tool si compone di un estrattore che scarica codice sorgente e log dei cambiamenti dal repository, e da un parser che usa il log per estrarre i contenuti di ogni singolo commit e le informazioni che comprendono classi e metodi modificati tra un commit e l'altro. In particolare, le informazioni specifiche sono le seguenti:
 \begin{itemize}
-\item Identificativo del cambiamento ;
-\item Data della modifica;
-\item Identificativo dello sviluppatore che ha apportato la modifica;
-\item Email dello sviluppatore;
-\item Commenti lasciati dallo sviluppatore;
-\item Lista di File modificati;
-\item Metodi modificati per ogni classe;
+\item Identificativo del cambiamento
+\item Data della modifica
+\item Identificativo dello sviluppatore che ha apportato la modifica
+\item Email dello sviluppatore
+\item Commenti lasciati dallo sviluppatore
+\item Lista di File modificati
+\item Metodi modificati per ogni classe
 \end{itemize}
 
 \textbf{BugZillaExtractor}: analizza i sistemi di Issue Tracker. Da qui è possibile estrarre informazioni sui bug-fixes, la data di risoluzione, gli sviluppatori coinvolti nella discussione e nella risoluzione del bug e file coinvolti. BugZillaExtractor è composto da due moduli, uno che estrrare la lista dei bug segnalati, mentre il secondo analizza questa lista per estrarre informazioni su ogni singolo bug.
