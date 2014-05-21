@@ -1,0 +1,113 @@
+\chapter{Linee guida per l'implementazione}
+
+\section{Nomi di file}
+Il software Java utilizza i seguenti suffissi per i file:
+\begin{itemize}
+  \item Per i sorgenti Java è: .java;
+  \item Per i file Bytecode è .class.
+\end{itemize}
+
+\section{Organizzazione dei file}
+Un file consiste di sezioni che dovrebbero essere separate da linee bianche e un commento opzionale che identifica ogni sezione. File più lunghi di 2000 linee sono ingombranti e devono essere evitati.
+
+\subsection{File sorgenti}
+Ogni file sorgente Java contiene una singola classe pubblica o un’interfaccia. Quando ci sono classi e interfacce private associate con la classe pubblica, è possibile inserirle nello stesso file sorgente della classe pubblica. La classe pubblica deve essere la prima classe o interfaccia nel file.
+
+I file sorgenti Java hanno la seguente struttura:
+\begin{itemize}
+  \item \textsc{Commenti di inizio:} tutti i file sorgenti devono iniziare con un commento in stile C che elenca il nome della classe, descrizione, autore e informazioni sulla versione, informazioni di copyright.
+  \begin{lstlisting}
+    /**
+    * Nome della classe
+    * 
+    * Descrizione
+    *
+    * Autore
+    *
+    * Informazione di versione
+    *
+    * 2014 - Copyright by University of Salerno
+    */
+  \end{lstlisting}
+  
+  \item \textsc{Istruzioni di package e import:} la prima linea non commento di molti file sorgenti Java è l'istruzione \textit{package} che può essere seguita da istruzioni \textit{import}. Ad esempio:\\
+  \begin{lstlisting}
+    package sie.miner.parser;
+    
+    import java.util.Map;
+  \end{lstlisting}
+
+  \item \textsc{Dichiarazioni di classe e di interfaccia:} l'ordine in cui le dichiarazioni di una classe o interfaccia devono apparire è il seguente: 
+\begin{itemize}
+  \item commento di documentazione della classe/interfaccia (/** ... */);
+  \item istruzione \textit{class} o \textit{interface};
+  \item commento di implementazione della classe/interfaccia, se necessario: questo commento deve contenere informazioni generali sulla classe o interfaccia che non sono appropriate per il commento di documentazione;
+  \item variabili di classe (static): prima le variabili di classe public, poi quelle protected e infine quelle private;
+  \item variabili di istanze: prima quelle public, poi quelle protected e infine quelle private;
+  \item costruttori;
+  \item metodi: questi devono essere raggruppati in base alla loro funzionalità piuttosto che in base a regole di visibilità o accessibilità. Ad esempio, un metodo di classe privato può stare tra due metodi pubblici. L'obiettivo è quello di rendere più semplice la lettura e la comprensione del codice.
+\end{itemize}  
+
+\end{itemize}
+
+\section{Indentazione}
+Come unità di indentazione devono essere usati quattro spazi ma la costruzione della medesima non è specificata (spazi o tabulazioni sono entrambi accettati). Le tabulazioni devono essere settate ogni otto spazi (non quattro).
+
+\subsection{Lunghezza delle linee}
+Evitare linee più lunghe di ottanta caratteri perché esse non vengono ben gestite da molti terminali e strumenti software. Per la documentazione si utilizza una più corta lunghezza di linea, generalmente non più di settanta caratteri.
+
+\subsection{Spostamento di linee}
+Quando un'espressione supera la lunghezza della linea, occorre spezzarla secondo i seguenti principi generali:
+\begin{itemize}
+  \item interrompere la linea dopo una virgola;
+  \item interrompere la linea prima di un operatore;
+  \item preferire interruzioni di alto livello rispetto ad interruzioni di basso livello;
+  \item allineare la nuova linea con l'inizio dell'espressione nella linea precedente;
+  \item se le regole precedenti rendono il codice più confuso o il codice è troppo spostato verso il margine destro utilizzare solo otto spazi di indentazione.
+\end{itemize}
+%\begin{lstlisting}
+%  nomeMetodo(espressioneLunga1, espressioneLunga2, espressioneLunga3,
+%                       espressioneLunga4, espressioneLunga5);
+%  
+%  var = nomeMetodo(espressioneLunga1,
+%          nomeMetodo2(espressioneLunga2,
+%              espressioneLunga3));
+%\end{lstlisting}
+
+\section{Commenti}
+I programmi Java possono avere due tipi di commenti: commenti d’implementazione e commenti di documentazione. I commenti d’implementazione sono quelli classici del C++, che sono delimitati da /*...*/ e //. I commenti di documentazione (noti anche come doc comments) sono esclusivi del Java, e sono delimitati da /**...*/. I doc comments possono essere estratti in file HTML utilizzando lo strumento Javadoc.I commenti di implementazione sono dei mezzi per commentare il codice o per commentare una particolare implementazione. I doc comments vengono utilizzati per descrivere la specifica del codice da una prospettiva non implementativa, per essere letti da sviluppatori che non devono necessariamente avere il codice in mano.I commenti dovrebbero essere usati per dare una panoramica del codice e per fornire informazioni aggiuntive che non sono prontamente disponibili nel codice stesso. I commenti devono contenere solo informazioni rilevanti per leggere e comprendere il programma. Ad esempio, informazioni su come il package corrispondente è costruito o in quale directory risiede non dovrebbero essere incluse in un commento.
+La discussione sulle decisioni non banali o non ovvie è adatta, ma bisogna evitare di duplicare le informazioni che sono presenti in maniera chiara nel codice. E’ molto facile che commenti ridondanti diventino obsoleti; in generale, si dovrebbe evitare di inserire commenti suscettibili di diventare obsoleti con l’evoluzione del software.La frequenza dei commenti talvolta riflette una povera qualità del codice. Quando ci si sente obbligati ad aggiungere un commento, considerare il caso di riscrivere il codice per renderlo più chiaro.I commenti non dovrebbero essere inclusi in grandi riquadri tracciati con asterischi o altri caratteri, né dovrebbero includere caratteri speciali come backspace.
+
+\subsection{Formattazione commento di implementazione}
+I programmi possono avere tre tipi di commenti di implementazione:\begin{itemize}
+  \item \textsc{Commenti di blocco}: sono usati per fornire descrizioni di file, metodi, strutture dati e algoritmi. I commenti di blocco possono essere usati all’inizio di ogni file e prima di ogni metodo. Possono inoltre essere usati in altri punti, come all’interno dei metodi. I commenti di blocco dentro una funzione o un metodo dovrebbero essere indentati allo stesso livello del codice che descrivono. Un commento di blocco dovrebbe essere preceduto da una linea bianca di separazione dal codice.
+  \begin{lstlisting}
+    /*
+     * Questo e' un commento di blocco
+     */
+  \end{lstlisting}
+  
+  \item \textsc{Commenti a linea singola}: sono brevi commenti che possono apparire su una singola linea di codice ed indentati al livello del codice che seguono. Se un commento non può essere scritto su una linea singola, deve seguire il formato di commento di blocco. Un commento a linea singola deve essere preceduto da una linea bianca. Quello che segue è un esempio di commento a linea singola nel codice Java.
+  \begin{lstlisting}
+    if(condizione) {
+      /*  Gestisce la condizione */
+      ...
+    }
+  \end{lstlisting}
+  
+  \item \textsc{Commenti di fine linea}: Il delimitatore di commento // può commentare una linea completa o una parte di essa. Non dovrebbe essere usato su più linee consecutive per commenti testuali; comunque, può essere usato su più linee consecutive per commentare sezioni del codice. Seguono tre esempi dei tre stili.
+  \begin{lstlisting}
+    if(i>0) {
+      //Fa qualcosa
+      ...
+    } else {
+      i--; //Spiega il perche' qui
+    }
+    
+    //if(x==0) {
+    //
+    //Fa qualcos'altro
+    //...
+    //}
+  \end{lstlisting}
+\end{itemize}
