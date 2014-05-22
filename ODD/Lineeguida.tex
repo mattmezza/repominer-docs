@@ -16,6 +16,7 @@ Ogni file sorgente Java contiene una singola classe pubblica o un’interfaccia.
 I file sorgenti Java hanno la seguente struttura:
 \begin{itemize}
   \item \textsc{Commenti di inizio:} tutti i file sorgenti devono iniziare con un commento in stile C che elenca il nome della classe, descrizione, autore e informazioni sulla versione, informazioni di copyright.
+\clearpage
   \begin{lstlisting}
     /**
     * Nome della classe
@@ -75,11 +76,17 @@ Quando un'espressione supera la lunghezza della linea, occorre spezzarla secondo
 %\end{lstlisting}
 
 \section{Commenti}
-I programmi Java possono avere due tipi di commenti: commenti d’implementazione e commenti di documentazione. I commenti d’implementazione sono quelli classici del C++, che sono delimitati da /*...*/ e //. I commenti di documentazione (noti anche come doc comments) sono esclusivi del Java, e sono delimitati da /**...*/. I doc comments possono essere estratti in file HTML utilizzando lo strumento Javadoc.I commenti di implementazione sono dei mezzi per commentare il codice o per commentare una particolare implementazione. I doc comments vengono utilizzati per descrivere la specifica del codice da una prospettiva non implementativa, per essere letti da sviluppatori che non devono necessariamente avere il codice in mano.I commenti dovrebbero essere usati per dare una panoramica del codice e per fornire informazioni aggiuntive che non sono prontamente disponibili nel codice stesso. I commenti devono contenere solo informazioni rilevanti per leggere e comprendere il programma. Ad esempio, informazioni su come il package corrispondente è costruito o in quale directory risiede non dovrebbero essere incluse in un commento.
-La discussione sulle decisioni non banali o non ovvie è adatta, ma bisogna evitare di duplicare le informazioni che sono presenti in maniera chiara nel codice. E’ molto facile che commenti ridondanti diventino obsoleti; in generale, si dovrebbe evitare di inserire commenti suscettibili di diventare obsoleti con l’evoluzione del software.La frequenza dei commenti talvolta riflette una povera qualità del codice. Quando ci si sente obbligati ad aggiungere un commento, considerare il caso di riscrivere il codice per renderlo più chiaro.I commenti non dovrebbero essere inclusi in grandi riquadri tracciati con asterischi o altri caratteri, né dovrebbero includere caratteri speciali come backspace.
+I programmi Java possono avere due tipi di commenti: commenti d’implementazione e commenti di documentazione. I commenti d’implementazione sono quelli classici del C++, che sono delimitati da /*...*/ e //. I commenti di documentazione (noti anche come doc comments) sono esclusivi del Java, e sono delimitati da /**...*/. I doc comments possono essere estratti in file HTML utilizzando lo strumento Javadoc.
+I commenti di implementazione sono dei mezzi per commentare il codice o per commentare una particolare implementazione. I doc comments vengono utilizzati per descrivere la specifica del codice da una prospettiva non implementativa, per essere letti da sviluppatori che non devono necessariamente avere il codice in mano.
+I commenti dovrebbero essere usati per dare una panoramica del codice e per fornire informazioni aggiuntive che non sono prontamente disponibili nel codice stesso. I commenti devono contenere solo informazioni rilevanti per leggere e comprendere il programma. Ad esempio, informazioni su come il package corrispondente è costruito o in quale directory risiede non dovrebbero essere incluse in un commento.
+
+La discussione sulle decisioni non banali o non ovvie è adatta, ma bisogna evitare di duplicare le informazioni che sono presenti in maniera chiara nel codice. E’ molto facile che commenti ridondanti diventino obsoleti; in generale, si dovrebbe evitare di inserire commenti suscettibili di diventare obsoleti con l’evoluzione del software.
+La frequenza dei commenti talvolta riflette una povera qualità del codice. Quando ci si sente obbligati ad aggiungere un commento, considerare il caso di riscrivere il codice per renderlo più chiaro.
+I commenti non dovrebbero essere inclusi in grandi riquadri tracciati con asterischi o altri caratteri, né dovrebbero includere caratteri speciali come backspace.
 
 \subsection{Formattazione commento di implementazione}
-I programmi possono avere tre tipi di commenti di implementazione:\begin{itemize}
+I programmi possono avere tre tipi di commenti di implementazione:
+\begin{itemize}
   \item \textsc{Commenti di blocco}: sono usati per fornire descrizioni di file, metodi, strutture dati e algoritmi. I commenti di blocco possono essere usati all’inizio di ogni file e prima di ogni metodo. Possono inoltre essere usati in altri punti, come all’interno dei metodi. I commenti di blocco dentro una funzione o un metodo dovrebbero essere indentati allo stesso livello del codice che descrivono. Un commento di blocco dovrebbe essere preceduto da una linea bianca di separazione dal codice.
   \begin{lstlisting}
     /*
@@ -110,4 +117,227 @@ I programmi possono avere tre tipi di commenti di implementazione:\begin{itemiz
     //...
     //}
   \end{lstlisting}
-\end{itemize}
+\end{itemize}
+
+\subsection{Commenti di documentazione}
+I \textit{doc comments} descrivono classi Java, interfacce, costruttori, metodi e campo. Ogni doc comment è compreso all'interno dei delimitatori di commento /** ... *, con un commento per ogni classe, interfaccia o membro. Questo commmento deve apparire solo prima della dichiarazione:		   			
+	\begin{lstlisting}
+    /**
+    * La classe Esempio fornisce...
+    */
+    public class Esempio {
+    	    ...
+	\end{lstlisting}
+Un doc comment si compone di una descrizione seguita da un blocco di tag. I tag da utilizzare sono @author, @exception, @param, @return, @see.
+\clearpage
+	\begin{lstlisting}
+	/**
+	* Verifica l'equivalenza tra due oggetti.
+	* Ritorna un boolean che indica se l'oggetto in cui 
+	* mi trovo e' equivalente all'oggetto specificato 
+	* come parametro.
+	* 
+	* @author						Marco Rossi
+	* @param		obj			l'oggetto che viene confrontato
+	* @return		true		se i due oggetti sono equivalenti
+	* 					false		altrimenti
+	*
+	* @see							java.util
+	*/
+	public boolean equals(Object obj) {
+		return (this == obj);
+	}				
+	\end{lstlisting}
+Notiamo che classi ed interfacce ad alto livello non sono indentate, mentre lo sono i loro membri. La prima lineaa del commento di documentazione (/**) per classi e interfacce non è indentata; le linee di commento successive hanno ognuna uno spazio di indentazione (per allineare verticalmente gli asterischi). I membri, inclusi i costruttori, hanno quattro spazi per la prima linea del doc comment e cinque spazi per quelli successivi. Se si ha la necessità di dare informazioni circa la classe, l'interfaccia, la variabile o il metodo, che non sono appropriate per la documentazione, usare un commento di implementazione di blocco o a singola linea immediatamente dopo la dichiarazione. Per esempio, i dettagli sull'implementazione di una classe devono andare in un commento di blocco seguente l'istruzione \textit{class}, non nel doc comment della classe. I doc comments non devono essere posizionati dentro il blocco di definizione di un metodo o un costruttore, perché Java associa i commenti di documentazione con la prima dichiarazione dopo il commento.
+\clearpage
+%
+% DICHIARAZIONI
+%
+\section{Dichiarazioni}
+\subsection{Numero per linea}
+Una dichiarazione per linea è raccomandata dal momento che incoraggia i commenti. In altre parole
+	\begin{lstlisting}
+	int livello;			// livello di indentazione
+	int dimensione;		// dimensione della tabella
+	\end{lstlisting}
+è preferito rispetto a 
+	\begin{lstlisting}
+	int livello, dimensione;
+	\end{lstlisting}
+Non inserire tipi differenti sulla stessa linea:
+	\begin{lstlisting}
+	int livello, varArray[];		//NO!
+	\end{lstlisting}
+Un'altra alternativa accettabile è usare le tabulazioni, cioè:
+\begin{lstlisting}
+	int		livello;					// livello di indentazione
+	int		dimensione;				// dimensione della tabella
+	float	posizioneCorrente	// posizione della tabella attualmente selezionata
+	\end{lstlisting}
+\subsection{Inizializzazione}
+Provare ad inizializzare le variabili locali nel punto in cui sono dichiarate. L'unica ragione per non inizializzare una variabile dove è dichiata è se il suo valore iniziale dipende da un calcolo che prima occorre eseguire.
+\subsection{Posizione}
+Mettere le dichiarazioni all'inizio dei blocchi. Un blocco è un codice racchiuso entro parentesi graffe aperta e chiusa. Non aspettare di dichiarare le variabili al loro primo uso: può confondere il programmatore inesperto e impedire la portabilità del codice dentro lo scope. L'unica eccezione a questa regola sono gli indici dei cicli for che in Java possono essere dichiarati nell'istruzione stessa.
+
+Evitare dichiarazioni locali che nascondono dichiarazioni a più alto livello. Ad esempio, non dichiarare una variabile con lo stesso nome in un blocco interno.
+\subsection{Dichiarazione di Classe e Interfaccia}
+Quando si codifcano classi e interfacce Java, si dovrebbe rispettare le seguenti regole di formattazione:
+\begin{itemize}
+\item Non mettere spazi tra il nome del metodo e la parentesi ``\{`` che apre la lista dei parametri;
+\item La parentesi graffa aperta ``\{`` si trova alla fine della stessa linea dell'istruzione di dichiarazione;
+\item La parentesi graffa chiusa ``\}`` inizia una linea indentandosi per mapparsi con la corrispondente istruzione di apertura, eccetto il caso in cui c'è un'istruzione vuota; allora la ``\}`` dovrebbe essere immediatamente dopo la ``\}``. 
+\end{itemize}
+\clearpage
+%
+%	ISTRUZIONI
+%
+\section{Istruzioni}
+\subsection{Istruzioni semplici}
+Ogni linea deve contenere al massimo un'istruzione.
+\begin{lstlisting}
+i++;			//Corretto
+j++;			//Corretto
+i++; j++;	//NO
+\end{lstlisting}
+\subsection{Istruzioni composte}
+Le istruzioni racchiuse dovrebbero essere indendate ad un ulteriore livello rispetto all'istruzione composta.\\
+La parentesi graffa aperta dovrebbe stare alla fine della linea che inizia l'istruzione composta, mentre la parentesi graffa chiusa dovrebbe iniziare una linea ed essere indentata verticalmente con l'inizio dell'istruzione composta.\\
+Le parentesi graffe vanno usate per tutte le dichiarazioni, anche quelle singole, quando sono parte di una struttura di controllo, come nelle istruzioni \textit{if-else} o \textit{for}.
+\subsection{Istruzione return}
+Un'istruzione return con un valore non dovrebbe usare parentesi, a meno che queste rendano in qualche modo il valore ritornato più ovvio.
+\subsection{Istruzioni if, if-else, if-else-if else}
+La classe di istruzioni \textit{if-else} deve avere la seguente forma:
+\clearpage
+\begin{lstlisting}
+if(condizione) {
+	...
+}
+if(condizione) {
+	...
+} else {
+	...
+}
+if (condizione) {
+	...
+} else if (condizione) {
+	...
+} else {
+	...
+}
+\end{lstlisting}
+Le istruzioni \textit{if} usano sempre le parentesi graffe.
+\subsection{Istruzioni for}
+Un'istruzione \textit{for} dovrebbe avere la seguente forma.
+\begin{lstlisting}
+for(inizializzazione; condizione; aggiornamento) {
+	...
+}
+\end{lstlisting}
+Quano si usa l'opearatore virgola nella clausola di inizializzazione o aggiornamento di un'istruzione for, evitare la complessità si utilizzare più di tre variabili. Se necessario, usare istruzioni separate prima del ciclo for o alla fine del ciclo.
+\subsection{Istruzioni while}
+Un'istruzione \textit{while} dovrebbe avere la seguente forma:
+\begin{lstlisting}
+while(condizione) {
+	...
+}
+\end{lstlisting}
+\subsection{Istruzioni do-while}
+Un'istruzione \textit{do-while} dovrebbe avere la seguente forma:
+\begin{lstlisting}
+do {
+	...
+} while(condizione);
+\end{lstlisting}
+\subsection{Istruzione switch}
+Un'istruzione \textit{switch} dovrebbe avere la seguente forma:
+\begin{lstlisting}
+switch(condizione) {
+case ABC:
+	...
+	/* Prosegue oltre */
+case DEF:
+	...
+	break;
+default:
+	...
+	break;
+}
+\end{lstlisting}
+Ogni volta che un caso non include l’istruzione break, e quindi prosegue al caso successivo, aggiungere un commento nel punto in cui normalmente dovrebbe esserci l’istruzione break. Ogni istruzione break dovrebbe includere un caso di default. Nel caso di default, l’istruzione break è ridondante, ma previene un errore nel caso in cui venga aggiunto un altro case.
+\subsection{Istruzioni try-catch}
+Un'istruzione try-catch dovrebbe avere la seguente forma
+\begin{lstlisting}
+try {
+	...
+} catch(Exception e){
+	...
+}
+\end{lstlisting}
+Un'istruzione \textit{try-catch} può inoltre essere seguita da \textit{finally}, che viene eseguita indipendentemente dal fatto che il blocco \textit{try} sia stato o meno completato con successo.
+\begin{lstlisting}
+try {
+	...
+} catch(Exception e){
+	...
+} finally {
+	...
+}
+\end{lstlisting}
+\clearpage
+%
+%	SPAZI BIANCHI
+%
+\section{Spazi Bianchi}
+\subsection{Linee bianche}
+Due linee bianche dovrebbero essere sempre usate nelle seguenti circostanze:
+\begin{itemize}
+\item fra sezioni di un file sorgente;
+\item fra definizioni di classe e interfaccia.
+\end{itemize}
+Una linea bianca dovrebbe essere sempre usata nelle seguenti circostanze:
+\begin{itemize}
+\item fra metodi;
+\item fra le variabili locali in un metodo e la sua prima istruzione;
+\item prima di un commento di blocco o a singola linea;
+\item fra sezioni logiche all'interno di un metodo.
+\end{itemize}
+\subsection{Spazi bianchi}
+Spazi bianchi dovrebbero essere usati nelle seguenti circostanze:
+\begin{itemize}
+\item una parola chiave seguita da una parentesi dovrebbe essere separata da uno spazio;
+\item uno spazio bianco non dovrebbe essere usato fra il nome di un metodo e le sue parentesi d'apertura;
+\item uno spazio bianco dovrebbe essere interposto dopo le virgole nelle liste di argomenti;
+\item tutti gli operaori binari eccetto l'operatore punto,dovrebbero essere separati dai loro operandi tramite spazi. Gli spazi bianchi non dovrebbero mai separare gli operandi unari come l'operatore meno, l'incremento e il decremento.
+\end{itemize}
+\clearpage
+%
+%	CONVENZIONE DI NOMI
+%
+\section{Convenzione di nomi}
+\subsection{Classi}
+I nomi di classe dovrebbero essere sostantivi, con le lettere minuscole e, sia la prima lettere del nome della classe, sia la prima lettera di ogni parola interna, deve essere maiuscola (convenzione \textit{camel case}).\\
+Cercare di rendere i nomi delle classi semplici, descrittivi e che rispettino il dominio applicativo. Usare parole intere evitando acronimi e abbreviazioni (a me no che l'abbreviazione sia più usata della forma lunga, come URL o HTML).\\
+Non dovrebbero essere usati underscore per legare nomi. Per le Servlet, è necessario far iniziare il nome della classe con il prefisso \textit{Servlet}. Stesso discorso vale per i Bean.
+\subsection{Interfacce}
+I nomi di interfaccia iniziano con la lettera \textit{I} e seguono le stesse regole dei nomi di classi.
+\subsection{Metodi}
+I nomi dei metodi devono essere verbi con iniziale minuscola e a gobba di cammello. Cercare di rendere i nomi dei metodi semplici, descrittivi e che rispettino il dominio applicativo. I nodi dei metodi non devono iniziare con caratteri di underscore o di dollaro. Usare parola intere evitando acronimi e abbreviazioni, a meno che l'abbreviazione sia più usata della forma lunga, come URL o HTML. Non dovrebbero essere usati underscore per legare nomi.
+\subsection{Variabili}
+Tutte le variabili e le istanze di classe devono essere scritte con iniziale minuscola e a gobba di cammello. I nomi delle variabili devono essere in inglese. Non devono iniziare con caratteri di underscore o dollaro. La scelta di un nome deve essere mnemonica e deve rispettare il dominio applicativo. Le variabili utilizzate come argomenti di funzioni devono iniziare con la lettera ``\textit{p}``. Le variabili che identificano una collezione di oggetti devono chiamarsi con lo stesso nome dell'oggetto contenuto nella lista e terminare con la lettera ``\textit{s}``. I nomi di variabili di un solo carattere dovrebbero essere evitati.
+\subsection{Costanti}
+I nomi delle variabili dichiarate come costanti di classe devono essere scritte in lettere tutte maiuscole con le parole separate da underscore. I nomi delle costanti devono essere in inglese. La scelta di un nome deve essere mnemonica e deve rispettare il dominio applicativo.
+\clearpage
+%
+%	CONSUETIDINI DI PROGRAMMAZIONE
+%
+\section{Consuetidini di programmazione}
+\subsection{Fornire accesso a variabili di istanza o di classe}
+Non rendere pubblica una variabile di istanza o di classe senza una buona ragione. Le variabili di istanza devono essere scritte o lette attraverso delle chiamate e metodi.
+\subsection{Riferire variabili a metodi di classe}
+Evitare di usare un oggetto per accedere a variabili o metodi di classe \textit{static}. Unsare invece il nome della classe.
+\subsection{Assegnamento di variabili}
+Evitare di assegnare a più variabili lo stesso valore in una sola istruzione. Non usare l'operatore di assegnamento inun punto in cui può essere facilmente confuso con l'operatore di uguaglianza. Non usare assegnamenti innestati nel tentativo di migliorare le prestazione a tempo di esecuzione. Questo è compito del compilatore!
+\subsection{Parentesi}
+È generalmente una buona idea usare le parentesi liberamente in espressioni che coinvolgono operatori misti per evitare problemi di precedenza degli operatori.
+\subsection{Valori ritornati}
+Provare a rendere la struttura del programma aderente alle proprie intenzioni.
