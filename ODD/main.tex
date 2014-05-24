@@ -10,7 +10,7 @@
 
 %tabella
 \usepackage{array}
-\usepackage{colortbl}
+\usepackage{xcolor,colortbl}
 \usepackage{booktabs}
 \usepackage{longtable}
 
@@ -19,6 +19,10 @@
 
 \titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
 \titlelabel{\thetitle.\quad}   % For consistency in all headin
+
+\definecolor{Gray}{gray}{0.8}
+\newcolumntype{a}{>{\columncolor{Gray}}p{.25\textwidth}}
+
 \begin{document}
 
 % === Per gli snippet =====================================
@@ -107,5 +111,6 @@ Versione 1.0\\[1cm]
 	\tableofcontents
 	\input{Introduzione}
 	\input{Lineeguida}
+	\input{ClassInterface}
 	\input{Glossario}
 \end{document}
