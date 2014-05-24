@@ -1,0 +1,16 @@
+\chapter{Approccio}
+Nella sessione di testing di RepoMinerEvo verrà utilizzato un approccio di tipo ``Category Partition'', che prevede che i test vengano effettuati in maniera da non scendere nei dettagli del codice, ma basandosi sulle specifiche delle funzionalità da testare.\\
+L’approccio alla fase di testing si compone di tre fasi:\\
+\begin{itemize}
+\item Testing di unità, che controlla i singoli componenti (classi, metodi)\\
+\item Testing di integrazione, che va a testare l'integrazione dei vari sottosistemi\\
+\item Testing funzionale: test funzionale, che andrà a verificare la funzionalità dell’intero sistema assemblato.\\
+\end{itemize}
+\section{Testing di unità}
+Con il testing di unità verrà effettuato un controllo delle varie classi e metodi del sistema, quindi saranno ricercate le condizioni di fallimento andando ad evidenziare gli errori. Il testing di unità, sarà eseguito dal team di sviluppo attraverso l’implementazione di classi di test utilizzando il framework JUnit. In particolare, per ogni classe che esegue operazioni complesse sarà sviluppata la relativa classe JUnit. Quindi, tutte le classi Entity e le classi Manager dovranno avere una corrispettiva classe di test.\\
+
+\section{Testing di integrazione}
+Con il testing di integrazione si effettuerà un controllo sull’integrazione delle varie componenti del sistema. Si adotterà una strategia di tipo “Bottom-up”. Per effettuare questi test di integrazione, spesso saranno necessari l’utilizzo di driver dato che tale strategia va ad integrare passo passo i sottosistemi partendo dal layer che si trova più in basso nella scala gerarchica.\\
+
+\section{Testing funzionale}
+Con il testing di sistema verrà effettuato un controllo della correttezza dell’intero sistema.  E’ da considerare il testing più critico, in quanto può risultare molto complesso andare alla ricerca di eventuali errori, essendo impegnati tutti i sottosistemi. Questo test sarà effettuato utilizzando il framework Selenium, che mette a disposizione strumenti per il controllo di sistemi web-based.

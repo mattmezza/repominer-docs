@@ -1,10 +1,20 @@
 \documentclass[a4paper, 12pt, italian]{report}
 \usepackage{ctable}
+\usepackage{multirow}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
+\usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{xcolor,colortbl}
+\usepackage{longtable}
 \usepackage{amsmath}
 \usepackage[italian]{babel}
+
+\usepackage[raggedright]{titlesec}
+\usepackage{blindtext}
+
+\titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
+\titlelabel{\thetitle.\quad}   % For consistency in all headings
 
 \begin{document}
 \begin{titlepage}
@@ -43,8 +53,11 @@ Versione 1.0\\[1cm]
 \vfill
 
 \end{titlepage}		
-       %\input{Revision}
-	%\setcounter{tocdepth}{1}	
-	%\tableofcontents
+    \input{Revision}
+	\setcounter{tocdepth}{1}	
+	\tableofcontents
+	
+	\input{Description}
+	\input{TestCaseSpecification}
 	
 \end{document}
