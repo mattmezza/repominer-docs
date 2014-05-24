@@ -1,6 +1,6 @@
 \chapter{Specifica dei casi di test}
 
-\section{Sezione 1}
+\section{Tabelle bavota style}
 		\newcolumntype{C}[1]{>{\centering}p{#1}}
 		\begin{table}[ht]
 		\centering
@@ -34,24 +34,75 @@
 			\end{tabular}
 		\label{Test Case Parsing Field}
 		\end {table}
-
-%\begin{table}[ht]
-%\begin{tabular}{|l|l|lll}
-%\cline{1-2}
-%\cellcolor[HTML]{C0C0C0}\textbf{Parametro} & pInstanceVariable                                &  &  &  \\ \cline{1-2}
-%\cellcolor[HTML]{C0C0C0}\textbf{Categoria} & \cellcolor[HTML]{C0C0C0}\textbf{Scelta}          &  &  &  \\ \cline{1-2}
-%                                           & 1: se valore = null {[}errore{]}                 &  &  &  \\ \cline{2-2}
-%\multirow{-2}{*}{valore vcp}               & 2: se valore != null {[}property valoreVPIVok{]} &  &  &  \\ \cline{1-2}
-%\end{tabular}
-%\end{table}
 		
-%\begin{table}[ht]
-%\begin{tabular}{|l|l|l|ll}
-%\cline{1-3}
-%\cellcolor[HTML]{C0C0C0}\textbf{Codice} & \cellcolor[HTML]{C0C0C0}\textbf{Combinazione} & \cellcolor[HTML]{C0C0C0}\textbf{Esito} &  &  \\
-%TC 0.01                                 & vpiv1                                         & errore                                 &  &  \\
-%TC 0.02                                 & vpiv1vcp1                                     & errore                                 &  &  \\
-%TC 0.03                                 & vpiv2vcp2vcb1                                 & errore                                 &  &  \\
-%TC 0.03                                 &                                               & Parsing                                &  &  \\
-%\end{tabular}
-%\end{table}
+\clearpage
+		
+\section{Tabelle letteratura style}
+		\begin{table}[ht]
+		\centering
+			\begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
+				\hline
+				\textbf{Parametri} & \textbf{Categorie} & \textbf{Scelte} \tabularnewline
+				\hline
+				\multirow{2}{*}{Intero x}		& In-range 				& 1, 2-19, 20	\tabularnewline
+				\cline{2-3}
+												& Out-of-range			& 0, 21			\tabularnewline
+				\hline
+				\multirow{3}{*}{Stringa a}		& Minimal length 		& 1 			\tabularnewline
+				\cline{2-3}
+												& Intermediate length	& 2-19			\tabularnewline
+				\cline{2-3}
+												& Maximal length		& 20			\tabularnewline
+				\hline
+				\multirow{2}{*}{Carattere c}	& Beginning				& First			\tabularnewline
+				\cline{2-3}
+												& Middle				& Middle		\tabularnewline
+				\cline{2-3}
+												& End					& Last			\tabularnewline
+				\cline{2-3}
+												& Not occur 			& Not occur		\tabularnewline
+				\hline
+			\end{tabular}
+		\end {table}
+
+\vspace{1cm}
+
+\begin{tabular}{lll}
+\multicolumn{3}{l}{ \textbf{Specifica test formale} }						\\
+x		&								&									\\
+1.		&	0							&	[error]							\\
+2.		&	1							&	[property stringok, length1]	\\
+3.		&	2-19						&	[property stringok, midlength]	\\
+4.		&	20							&	[property stringok, length20]	\\
+5.		&	21							&	[error]							\\
+		&								&									\\
+a		&								&									\\
+1.		&	Length 1					&	[if stringok and length1]		\\
+2.		&	Length 2-19 				&	[if stringok and midlength]		\\
+3.		&	Length 20					&	[if stringok and length20]		\\
+		&								&									\\
+c		&								&									\\
+1.		&	At first position in string	&	[if stringok]					\\
+2.		&	At last position in string	&	[if stringok and not length1]	\\
+3.		&	In middle of string			&	[if stringok and not length1]	\\
+4.		&	Not in string				&	[if stringok]					\\
+\end{tabular}
+
+
+\vspace{1cm}
+
+\begin{tabular}{ll}
+\multicolumn{2}{l}{ \textbf{Test frame \& test cases} }		\\
+x1		&	x = 0											\\
+x2a1c1	&	x = 1, a = ‘A’, c = ‘A’							\\
+x2a1c4	&	x = 1, a = ‘A’, c = ‘B’							\\
+x3a2c1	&	x = 7, a = ‘ABCDEFG’, c = ‘A’					\\
+x3a2c2	&	x = 7, a = ‘ABCDEFG’, c = ‘G’					\\
+x3a2c3	&	x = 7, a = ‘ABCDEFG’, c = ‘D’					\\
+x3a2c4	&	x = 7, a = ‘ABCDEFG’, c = ‘X’					\\
+x4a3c1	&	x = 20, a = ‘ABCDEFGHIJKLMNOPQRST’, c = ‘A’		\\
+x4a3c2	&	x = 20, a = ‘ABCDEFGHIJKLMNOPQRST’, c = ‘T’		\\
+x4a3c3	&	x = 20, a = ‘ABCDEFGHIJKLMNOPQRST’, c = ‘J’		\\
+x4a3c4	&	x = 20, a = ‘ABCDEFGHIJKLMNOPQRST’, c = ‘X’		\\
+x5		&	x = 21											\\
+\end{tabular}
