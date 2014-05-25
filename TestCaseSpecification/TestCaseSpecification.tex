@@ -1,43 +1,43 @@
 \chapter{Specifica dei casi di test}
 
-\section{Tabelle bavota style}
-		\newcolumntype{C}[1]{>{\centering}p{#1}}
-		\begin{table}[ht]
-		\centering
-			\begin{tabular}{|p{3cm}|p{9cm}|}
-				\hline
-				\textbf{Parametro} 			& pInstanceVariable\tabularnewline
-				\hline
-				\textbf{Categoria} 			& \textbf{Scelta}\tabularnewline
-				\hline
-				\multirow{2}{*}{valore vcp} & 1: se valore = null [errore] \tabularnewline
-				\cline{2-2}
-											& 2: se valore != null [property valoreVPIVok]\tabularnewline
-				\hline
-			\end{tabular}
-		\end {table}
+%\section{Tabelle bavota style}
+%		\newcolumntype{C}[1]{>{\centering}p{#1}}
+%		\begin{table}[ht]
+%		\centering
+%			\begin{tabular}{|p{3cm}|p{9cm}|}
+%				\hline
+%				\textbf{Parametro} 			& pInstanceVariable\tabularnewline
+%				\hline
+%				\textbf{Categoria} 			& \textbf{Scelta}\tabularnewline
+%				\hline
+%				\multirow{2}{*}{valore vcp} & 1: se valore = null [errore] \tabularnewline
+%				\cline{2-2}
+%											& 2: se valore != null [property valoreVPIVok]\tabularnewline
+%				\hline
+%			\end{tabular}
+%		\end {table}
+%		
+%		\begin{table}[ht]
+%		\centering
+%			\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+%				\hline
+%				\textbf{Codice} & \textbf{Combinazione} & \textbf{Esito}\tabularnewline
+%				\hline
+%				TC 0.01 		& vpiv1 				& errore \tabularnewline
+%				\hline
+%				TC 0.02 		& vpiv1vcp1				& errore \tabularnewline
+%				\hline
+%				TC 0.03 		& vpiv2vcp2vcb1 		& errore \tabularnewline
+%				\hline
+%				TC 0.04 		& vpiv2vcp2vcb2 		& parsing \tabularnewline
+%				\hline
+%			\end{tabular}
+%		\label{Test Case Parsing Field}
+%		\end {table}
+%		
+%\clearpage
 		
-		\begin{table}[ht]
-		\centering
-			\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-				\hline
-				\textbf{Codice} & \textbf{Combinazione} & \textbf{Esito}\tabularnewline
-				\hline
-				TC 0.01 		& vpiv1 				& errore \tabularnewline
-				\hline
-				TC 0.02 		& vpiv1vcp1				& errore \tabularnewline
-				\hline
-				TC 0.03 		& vpiv2vcp2vcb1 		& errore \tabularnewline
-				\hline
-				TC 0.04 		& vpiv2vcp2vcb2 		& parsing \tabularnewline
-				\hline
-			\end{tabular}
-		\label{Test Case Parsing Field}
-		\end {table}
-		
-\clearpage
-		
-\section{Tabelle slide oliveto style}
+\section{Tabelle oliveto slides style}
 		\begin{table}[ht]
 		\centering
 			\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
@@ -108,7 +108,7 @@ x5		&	x = 21											\\
 
 \clearpage
 		
-\section{Tabelle paper category partition style}
+\section{Tabelle category partition paper style}
 
 \begin{tabular}{lll}
 \multicolumn{3}{l}{ \textbf{\# Test specification for find command} }								\\
@@ -158,3 +158,66 @@ File name:			&	good file name				\\
 \multicolumn{2}{l}{ This line has " one quote on it }			\\
 \hline
 \end{tabular}
+
+\clearpage
+
+\subsection{Calcolo numero di revisioni del sistema}
+
+\begin{tabular}{lp{6cm}l}
+\multicolumn{3}{l}{ \textbf{\# Specifica test per il calcolo del numero di revisioni del sistema } }	\\
+\multicolumn{3}{l}{ }																\\
+\textbf{Parametri:}		& 										&					\\
+Nome progetto:			&										&					\\
+						&	nome progetto corretto				&					\\
+						&	nome progetto errato				&	[error]			\\
+						&	omesso								&	[error]			\\
+
+Metrica:				&										&					\\
+						&	nome metrica corretto				&					\\
+						&	nome metrica errato					&	[error]			\\
+						&	omesso								&	[error]			\\
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{ll}
+\hline
+\multicolumn{2}{l}{ \textbf{Test Frame:} }							\\
+\hline
+Test Case 1:		&	{Key = 1.1.}								\\
+Nome progetto:		&	nome progetto corretto						\\
+Metrica:			&	nome metrica corretto						\\
+\multicolumn{2}{l}{ }												\\
+\multicolumn{2}{l}{ Comando per eseguire il test: }					\\
+\multicolumn{2}{l}{ calculate metric\_name project\_name }			\\
+\multicolumn{2}{l}{ }												\\
+\multicolumn{2}{l}{ Istruzioni per la verifica del test: }			\\
+\multicolumn{2}{l}{ Dovrebbe apparire il seguente output: }			\\
+\multicolumn{2}{l}{ metric\_name of project\_name is value }		\\
+\hline
+\end{tabular}
+
+\clearpage
+
+\subsection{Calcolo Extended Change Model}
+
+\begin{tabular}{lp{6cm}l}
+\multicolumn{3}{l}{ \textbf{\# Specifica test per il calcolo dell'Extended Change Model} }		\\
+\multicolumn{3}{l}{ }																			\\
+\textbf{Parametri:}		& 													&					\\
+Periodo	:				&													&					\\
+						&	vuoto											&	[error]			\\
+						&	un mese											&					\\
+						&	più mesi										&					\\
+						&	periodo più lungo dell'esistenza del sistema	&	[error]			\\
+Numero di cambiamenti:	&													&					\\
+						&	nessun cambiamento								&	[error]			\\
+						&	un cambiamento									&					\\
+						&	più cambiamenti									&					\\
+Periodo di burst:		&													&					\\
+						&	scelta1											&					\\
+						&	scelta2											&					\\
+						&	scelta3											&					\\
+\end{tabular}
+
+\vspace{1cm}
