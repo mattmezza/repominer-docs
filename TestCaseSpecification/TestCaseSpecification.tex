@@ -1,47 +1,50 @@
 \chapter{Specifica dei casi di test}
 
-%\section{Tabelle bavota style}
-%		\newcolumntype{C}[1]{>{\centering}p{#1}}
-%		\begin{table}[ht]
-%		\centering
-%			\begin{tabular}{|p{3cm}|p{9cm}|}
-%				\hline
-%				\textbf{Parametro} 			& pInstanceVariable\tabularnewline
-%				\hline
-%				\textbf{Categoria} 			& \textbf{Scelta}\tabularnewline
-%				\hline
-%				\multirow{2}{*}{valore vcp} & 1: se valore = null [errore] \tabularnewline
-%				\cline{2-2}
-%											& 2: se valore != null [property valoreVPIVok]\tabularnewline
-%				\hline
-%			\end{tabular}
-%		\end {table}
-%		
-%		\begin{table}[ht]
-%		\centering
-%			\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-%				\hline
-%				\textbf{Codice} & \textbf{Combinazione} & \textbf{Esito}\tabularnewline
-%				\hline
-%				TC 0.01 		& vpiv1 				& errore \tabularnewline
-%				\hline
-%				TC 0.02 		& vpiv1vcp1				& errore \tabularnewline
-%				\hline
-%				TC 0.03 		& vpiv2vcp2vcb1 		& errore \tabularnewline
-%				\hline
-%				TC 0.04 		& vpiv2vcp2vcb2 		& parsing \tabularnewline
-%				\hline
-%			\end{tabular}
-%		\label{Test Case Parsing Field}
-%		\end {table}
-%		
-%\clearpage
+\section{Tabelle bavota style}
+		\newcolumntype{C}[1]{>{\centering}p{#1}}
+		\begin{table}[ht]
+		\centering
+			\begin{tabular}{|p{3cm}|p{9cm}|}
+				\hline
+				\cellcolor{Gray} \textbf{Parametro} 			& pInstanceVariable\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 			& \textbf{Scelta}\tabularnewline
+				\hline
+				\multirow{2}{*}{valore vcp} & 1: se valore = null [errore] \tabularnewline
+				\cline{2-2}
+											& 2: se valore != null [property valoreVPIVok]\tabularnewline
+				\hline
+			\end{tabular}
+		\end {table}
+		
+		\begin{table}[ht]
+		\centering
+			\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+				\hline
+				\rowcolor{Gray}
+				\textbf{Codice} & \textbf{Combinazione} & \textbf{Esito}\tabularnewline
+				\hline
+				TC 0.01 		& vpiv1 				& errore \tabularnewline
+				\hline
+				TC 0.02 		& vpiv1vcp1				& errore \tabularnewline
+				\hline
+				TC 0.03 		& vpiv2vcp2vcb1 		& errore \tabularnewline
+				\hline
+				TC 0.04 		& vpiv2vcp2vcb2 		& parsing \tabularnewline
+				\hline
+			\end{tabular}
+		\label{Test Case Parsing Field}
+		\end {table}
+		
+\clearpage
 		
 \section{Tabelle oliveto slides style}
 		\begin{table}[ht]
 		\centering
 			\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
 				\hline
+				\rowcolor{Gray}
 				\textbf{Parametri} & \textbf{Categorie} & \textbf{Scelte} \tabularnewline
 				\hline
 				\multirow{2}{*}{Intero x}		& In-range 				& 1, 2-19, 20	\tabularnewline
