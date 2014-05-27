@@ -1,26 +1,62 @@
 \chapter{Casi di test}
 Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. Il metodo scelto ha numerosi limiti, ma, tuttavia, è il più semplice da applicare. Analizzare le condizioni limite consentirà di effettuare un test più affidabile.
 
-\paragraph{Specifica test formale\\}
+%Simone:
+%#specifica test per calcolo del numero medio di volte in cui i file di un package hanno subito operazioni di bug fixing
+%#specifica test per calcolo del numero di autori di commit effettuati all'interno di un package
+%#specifica test per calcolo del numero di linee aggiunte o rimosse (somma, media e massimo)
+%#specifica test per calcolo della dimensione media dei file modificati
+%#specifica test per calcolo del'extended change model
+%#calcolo adapting size entropy
 
-\begin{tabular}{lll}
-x		&								&									\\
-1.		&	0							&	[error]							\\
-2.		&	1							&	[property stringok, length1]	\\
-3.		&	2-19						&	[property stringok, midlength]	\\
-4.		&	20							&	[property stringok, length20]	\\
-5.		&	21							&	[error]							\\
-		&								&									\\
-a		&								&									\\
-1.		&	Length 1					&	[if stringok and length1]		\\
-2.		&	Length 2-19 				&	[if stringok and midlength]		\\
-3.		&	Length 20					&	[if stringok and length20]		\\
-		&								&									\\
-c		&								&									\\
-1.		&	At first position in string	&	[if stringok]					\\
-2.		&	At last position in string	&	[if stringok and not length1]	\\
-3.		&	In middle of string			&	[if stringok and not length1]	\\
-4.		&	Not in string				&	[if stringok]					\\
+\paragraph{Metrica per il calcolo del numero medio di file cambiati in un package\\}
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+File del package			&			&			&				\\
+\hline
+		&	Numero (fnum)				&			&				\\
+		&	1.					&	0		&	[property Empty]	\\
+		&	2.					&	1		&	[property NonEmpty]	\\
+		&	3.					&	Più di 1	&	[property NonEmpty]	\\
+		&	Tipo (ftype)				&			&				\\
+		&	1.					&	Testo		&	[if NonEmpty][property Text]\\
+		&	2.					&	Binario		&	[if NonEmpty][property Bin]\\
+		&	Versioning (fver)			&			&				\\
+		&	1.					&	Sì		&	[if NonEmpty][property Vers]\\
+		&	2.					&	No		&	[if NonEmpty][property NoVers]\\
+\hline
+Insieme di cambiamenti	&					&			&				\\
+\hline
+		&	Numero (cnum)				&			&				\\
+		&	1.					&	0		&	[property NoChanged]	\\
+		&	2.					&	1		&	[property Changed]	\\
+		&	3.					&	Più di 1	&	[property Changed]	\\
+		&	Cancellazioni (ccan)			&			&				\\
+		&	1.					&	0		&	[if Changed][property NoDel]\\
+		&	2.					&	Almeno 1	&	[if Changed][property Del]\\
+		&	Inserimenti (cins)			&			&				\\
+		&	1.					&	0		&	[if Changed][property NoIns]\\
+		&	2.					&	Almeno 1	&	[if Changed][property Ins]\\
+		&	Messaggio (cmes)			&			&				\\
+		&	1.					&	Vuoto		&	[if Changed][property NoMsg]\\
+		&	2.					&	Non vuoto	&	[if Changed][property Msg]\\
+\hline
+Periodo di tempo	&					&			&				\\
+		&	Tipologia (pclass)			&			&				\\
+		&	1.					&	Tempo		&	[property Time]		\\
+		&	2.					&	Cambiamenti	&	[property Changes]	\\
+		&	3.					&	Burst		&	[property Burst]	\\
+		&	4.					&	Altro		&	[error]			\\
+		&	Tipo (ptype)				&			&				\\
+		&	1.					&	Non numerico	&	[if not Burst][error]	\\
+		&	2.					&	Numerico	&	[if not Burst]		\\
+		&	Lunghezza (plun)			&			&				\\
+		&	1.					&	$\leq 0$	&	[error]			\\
+		&	2.					&	$> 0$		&				\\
+		&	3.					&	$> esistenza del sistema$ & 	[if Time][error]\\
+		&	4.					&	$> cambiamenti totali$	&	[if Changes][error]\\
+\hline
 \end{tabular}
 
 \vspace{1cm}
@@ -33,9 +69,9 @@ c		&								&									\\
 				\rowcolor{Gray}
 				\textbf{Codice} & \textbf{Combinazione} & \textbf{Esito}\tabularnewline
 				\hline
-				TC 0.01 		& vpiv1 				& errore \tabularnewline
+				TC 0.01 		& vpiv1 			& errore \tabularnewline
 				\hline
-				TC 0.02 		& vpiv1vcp1				& errore \tabularnewline
+				TC 0.02 		& vpiv1vcp1			& errore \tabularnewline
 				\hline
 				TC 0.03 		& vpiv2vcp2vcb1 		& errore \tabularnewline
 				\hline
