@@ -9,55 +9,348 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 %#specifica test per calcolo del'extended change model
 %#calcolo adapting size entropy
 
-\paragraph{Metrica per il calcolo del numero medio di file cambiati in un package\\}
+\section{Specifica test}
+\subsection{Specifica test per calcolo del numero di revisioni del sistema}
 
-\begin{tabular}{|l|l|l|l|}
-\hline
-File del package			&			&			&				\\
-\hline
-		&	Numero (fnum)				&			&				\\
-		&	1.					&	0		&	[property Empty]	\\
-		&	2.					&	1		&	[property NonEmpty]	\\
-		&	3.					&	Più di 1	&	[property NonEmpty]	\\
-		&	Tipo (ftype)				&			&				\\
-		&	1.					&	Testo		&	[if NonEmpty][property Text]\\
-		&	2.					&	Binario		&	[if NonEmpty][property Bin]\\
-		&	Versioning (fver)			&			&				\\
-		&	1.					&	Sì		&	[if NonEmpty][property Vers]\\
-		&	2.					&	No		&	[if NonEmpty][property NoVers]\\
-\hline
-Insieme di cambiamenti	&					&			&				\\
-\hline
-		&	Numero (cnum)				&			&				\\
-		&	1.					&	0		&	[property NoChanged]	\\
-		&	2.					&	1		&	[property Changed]	\\
-		&	3.					&	Più di 1	&	[property Changed]	\\
-		&	Cancellazioni (ccan)			&			&				\\
-		&	1.					&	0		&	[if Changed][property NoDel]\\
-		&	2.					&	Almeno 1	&	[if Changed][property Del]\\
-		&	Inserimenti (cins)			&			&				\\
-		&	1.					&	0		&	[if Changed][property NoIns]\\
-		&	2.					&	Almeno 1	&	[if Changed][property Ins]\\
-		&	Messaggio (cmes)			&			&				\\
-		&	1.					&	Vuoto		&	[if Changed][property NoMsg]\\
-		&	2.					&	Non vuoto	&	[if Changed][property Msg]\\
-\hline
-Periodo di tempo	&					&			&				\\
-		&	Tipologia (pclass)			&			&				\\
-		&	1.					&	Tempo		&	[property Time]		\\
-		&	2.					&	Cambiamenti	&	[property Changes]	\\
-		&	3.					&	Burst		&	[property Burst]	\\
-		&	4.					&	Altro		&	[error]			\\
-		&	Tipo (ptype)				&			&				\\
-		&	1.					&	Non numerico	&	[if not Burst][error]	\\
-		&	2.					&	Numerico	&	[if not Burst]		\\
-		&	Lunghezza (plun)			&			&				\\
-		&	1.					&	$\leq 0$	&	[error]			\\
-		&	2.					&	$> 0$		&				\\
-		&	3.					&	$> esistenza del sistema$ & 	[if Time][error]\\
-		&	4.					&	$> cambiamenti totali$	&	[if Changes][error]\\
-\hline
-\end{tabular}
+		\newcolumntype{C}[1]{>{\centering}p{#1}}
+		
+		\begin{table}[ht]
+		\footnotesize
+		\centering
+			\begin{tabular}{|p{4cm}|p{4cm}p{5cm}|}
+				\hline
+				\cellcolor{Gray} \textbf{Parametro}		& Insieme dei cambiamenti	&									\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (cnum)} 			& 1. Zero 					&	[property NoChanged]			\tabularnewline
+				\cline{2-3}
+														& 2. Uno					&	[property Changed]				\tabularnewline
+				\cline{2-3}
+														& 3. Più di uno				&	[property Changed]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Cancellazioni (ccan)} 	& 1. Zero	 				&	[if Changed][property NoDel] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno				&	[if Changed][property Del]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Inserimenti (cins)} 	& 1. Zero 					&	[if Changed][property NoIns] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno 			&	[if Changed][property Ins]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Messaggio (cmes)} 		& 1. Vuoto 					&	[if Changed][property NoMsg] 	\tabularnewline
+				\cline{2-3}
+														& 2. Non vuoto 				&	[if Changed][property Msg]		\tabularnewline
+				\hline			
+				
+				
+			\end{tabular}
+		\end {table}
+		
+\clearpage
+		
+\subsection{Specifica test per calcolo del numero medio di volte in cui i file di un package hanno subito cambiamenti insieme di cambiamenti}	
+	
+		\begin{table}[ht]
+		\footnotesize
+		\centering
+			\begin{tabular}{|p{4cm}|p{4cm}p{5cm}|}
+				\hline
+				\cellcolor{Gray} \textbf{Parametro}		& File del package	&											\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (fnum)} 			& 1. Zero 					&	[property Empty] 				\tabularnewline
+				\cline{2-3}
+														& 2. Uno 					&	[property NonEmpty]				\tabularnewline
+				\cline{2-3}
+														& 3. più di uno 			&	[property NonEmpty]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Tipo (ftype)} 			& 1. Testo					&	[if NonEmpty][property Text] 	\tabularnewline
+				\cline{2-3}
+														& 2. Binario				&	[if NonEmpty][property Bin]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Versioning (fver)}		& 1. Si						&	[if NonEmpty][property Vers]	\tabularnewline
+				\cline{2-3}
+														& 2. No						&	[if NonEmpty][property NoVers]	\tabularnewline
+				\hline
+				
+				
+				\cellcolor{Gray} \textbf{Parametro}		& Insieme dei cambiamenti	&									\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (cnum)} 			& 1. Zero 					&	[property NoChanged]			\tabularnewline
+				\cline{2-3}
+														& 2. Uno					&	[property Changed]				\tabularnewline
+				\cline{2-3}
+														& 3. Più di uno				&	[property Changed]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Cancellazioni (ccan)} 	& 1. Zero	 				&	[if Changed][property NoDel] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno				&	[if Changed][property Del]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Inserimenti (cins)} 	& 1. Zero 					&	[if Changed][property NoIns] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno 			&	[if Changed][property Ins]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Messaggio (cmes)} 		& 1. Vuoto 					&	[if Changed][property NoMsg] 	\tabularnewline
+				\cline{2-3}
+														& 2. Non vuoto 				&	[if Changed][property Msg]		\tabularnewline
+				\hline			
+				
+			\end{tabular}
+		\end {table}
+
+\clearpage
+
+\subsection{Specifica test per calcolo del numero medio di volte in cui i file di un package hanno subito operazioni di refactoring insieme cambiamenti}
+
+		\begin{table}[ht]
+		\footnotesize
+		\centering
+			\begin{tabular}{|p{4cm}|p{4cm}p{5cm}|}
+				\hline
+				\cellcolor{Gray} \textbf{Parametro}		& File del package	&											\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (fnum)} 			& 1. Zero 					&	[property Empty] 				\tabularnewline
+				\cline{2-3}
+														& 2. Uno 					&	[property NonEmpty]				\tabularnewline
+				\cline{2-3}
+														& 3. più di uno 			&	[property NonEmpty]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Tipo (ftype)} 			& 1. Testo					&	[if NonEmpty][property Text] 	\tabularnewline
+				\cline{2-3}
+														& 2. Binario				&	[if NonEmpty][property Bin]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Versioning (fver)}		& 1. Si						&	[if NonEmpty][property Vers]	\tabularnewline
+				\cline{2-3}
+														& 2. No						&	[if NonEmpty][property NoVers]	\tabularnewline
+				\hline
+				
+				
+				\cellcolor{Gray} \textbf{Parametro}		& Insieme dei cambiamenti	&									\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (cnum)} 			& 1. Zero 					&	[property NoChanged]			\tabularnewline
+				\cline{2-3}
+														& 2. Uno					&	[property Changed]				\tabularnewline
+				\cline{2-3}
+														& 3. Più di uno				&	[property Changed]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Cancellazioni (ccan)} 	& 1. Zero	 				&	[if Changed][property NoDel] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno				&	[if Changed][property Del]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Inserimenti (cins)} 	& 1. Zero 					&	[if Changed][property NoIns] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno 			&	[if Changed][property Ins]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Messaggio (cmes)} 		& 1. Vuoto 					&	[if Changed][property NoMsg] 	\tabularnewline
+				\cline{2-3}
+														& 2. Non vuoto 				&	[if Changed][property Msg]		\tabularnewline
+				\hline			
+				
+			\end{tabular}
+		\end {table}
+		
+\clearpage
+
+\subsection{Numero di cambiamenti totali di ogni file di un dato progetto}
+		
+		\begin{table}[ht]
+		\footnotesize
+		\centering
+			\begin{tabular}{|p{4cm}|p{4cm}p{5cm}|}
+				\hline
+				\cellcolor{Gray} \textbf{Parametro}		& File del package	&											\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (fnum)} 			& 1. Zero 					&	[property Empty] 				\tabularnewline
+				\cline{2-3}
+														& 2. Uno 					&	[property NonEmpty]				\tabularnewline
+				\cline{2-3}
+														& 3. più di uno 			&	[property NonEmpty]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Tipo (ftype)} 			& 1. Testo					&	[if NonEmpty][property Text] 	\tabularnewline
+				\cline{2-3}
+														& 2. Binario				&	[if NonEmpty][property Bin]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Versioning (fver)}		& 1. Si						&	[if NonEmpty][property Vers]	\tabularnewline
+				\cline{2-3}
+														& 2. No						&	[if NonEmpty][property NoVers]	\tabularnewline
+				\hline
+				
+				
+				\cellcolor{Gray} \textbf{Parametro}		& Insieme dei cambiamenti	&									\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (cnum)} 			& 1. Zero 					&	[property NoChanged]			\tabularnewline
+				\cline{2-3}
+														& 2. Uno					&	[property Changed]				\tabularnewline
+				\cline{2-3}
+														& 3. Più di uno				&	[property Changed]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Cancellazioni (ccan)} 	& 1. Zero	 				&	[if Changed][property NoDel] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno				&	[if Changed][property Del]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Inserimenti (cins)} 	& 1. Zero 					&	[if Changed][property NoIns] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno 			&	[if Changed][property Ins]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Messaggio (cmes)} 		& 1. Vuoto 					&	[if Changed][property NoMsg] 	\tabularnewline
+				\cline{2-3}
+														& 2. Non vuoto 				&	[if Changed][property Msg]		\tabularnewline
+				\hline			
+				
+			\end{tabular}
+		\end {table}
+
+\clearpage
+
+\subsection{Entropia dei cambiamenti}
+		
+		
+		\begin{table}[ht]
+		\footnotesize
+		\centering
+			\begin{tabular}{|p{4cm}|p{4cm}p{5cm}|}
+				\hline
+				\cellcolor{Gray} \textbf{Parametro}		& File del package	&											\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (fnum)} 			& 1. Zero 					&	[property Empty] 				\tabularnewline
+				\cline{2-3}
+														& 2. Uno 					&	[property NonEmpty]				\tabularnewline
+				\cline{2-3}
+														& 3. più di uno 			&	[property NonEmpty]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Tipo (ftype)} 			& 1. Testo					&	[if NonEmpty][property Text] 	\tabularnewline
+				\cline{2-3}
+														& 2. Binario				&	[if NonEmpty][property Bin]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Versioning (fver)}		& 1. Si						&	[if NonEmpty][property Vers]	\tabularnewline
+				\cline{2-3}
+														& 2. No						&	[if NonEmpty][property NoVers]	\tabularnewline
+				\hline
+				
+				
+				\cellcolor{Gray} \textbf{Parametro}		& Insieme dei cambiamenti	&									\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{3}{*}{Numero (cnum)} 			& 1. Zero 					&	[property NoChanged]			\tabularnewline
+				\cline{2-3}
+														& 2. Uno					&	[property Changed]				\tabularnewline
+				\cline{2-3}
+														& 3. Più di uno				&	[property Changed]				\tabularnewline
+				\hline
+				\multirow{2}{*}{Cancellazioni (ccan)} 	& 1. Zero	 				&	[if Changed][property NoDel] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno				&	[if Changed][property Del]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Inserimenti (cins)} 	& 1. Zero 					&	[if Changed][property NoIns] 	\tabularnewline
+				\cline{2-3}
+														& 2. Almeno uno 			&	[if Changed][property Ins]		\tabularnewline
+				\hline
+				\multirow{2}{*}{Messaggio (cmes)} 		& 1. Vuoto 					&	[if Changed][property NoMsg] 	\tabularnewline
+				\cline{2-3}
+														& 2. Non vuoto 				&	[if Changed][property Msg]		\tabularnewline
+				\hline			
+				
+				
+				\cellcolor{Gray} \textbf{Parametro}		& Periodo di tempo			&									\tabularnewline
+				\hline
+				\rowcolor{Gray}
+				\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
+				\hline
+				\multirow{4}{*}{Tipologia (pclass)} 	& 1. Tempo 					&	[property Time]				 	\tabularnewline
+				\cline{2-3}
+														& 2. Cambiamenti			&	[property Changes]				\tabularnewline
+				\cline{2-3}
+														& 3. Burst 					&	[property Burst]				\tabularnewline
+				\cline{2-3}
+														& 4. Altro 					&	[error]							\tabularnewline
+				\hline
+				\multirow{2}{*}{Tipo (ptype)} 			& 1. Non numerico 			&	[if not Burst][error]		 	\tabularnewline
+				\cline{2-3}
+														& 2. Numerico 				&	[if not Burst]					\tabularnewline
+				\hline
+				\multirow{4}{*}{Lunghezza (plun)} 		& 1. $\leq 0$					&	[error] 					\tabularnewline
+				\cline{2-3}
+														& 2. $> 0$						&								\tabularnewline
+				\cline{2-3}
+														& 3. $> esistenza del sistema$ 	& 	[if Time][error]			\tabularnewline
+				\cline{2-3}
+														& 4. $> cambiamenti totali$		&	[if Changes][error]			\tabularnewline
+				\hline
+			\end{tabular}
+		\end {table}
+
+\clearpage
+
+%\begin{tabular}{|l|l|l|l|}
+%\hline
+%File del package			&			&			&				\\
+%\hline
+%		&	Numero (fnum)				&			&				\\
+%		&	1.					&	0		&	[property Empty]	\\
+%		&	2.					&	1		&	[property NonEmpty]	\\
+%		&	3.					&	Più di 1	&	[property NonEmpty]	\\
+%		&	Tipo (ftype)				&			&				\\
+%		&	1.					&	Testo		&	[if NonEmpty][property Text]\\
+%		&	2.					&	Binario		&	[if NonEmpty][property Bin]\\
+%		&	Versioning (fver)			&			&				\\
+%		&	1.					&	Sì		&	[if NonEmpty][property Vers]\\
+%		&	2.					&	No		&	[if NonEmpty][property NoVers]\\
+%\hline
+%Insieme di cambiamenti	&					&			&				\\
+%\hline
+%		&	Numero (cnum)				&			&				\\
+%		&	1.					&	0		&	[property NoChanged]	\\
+%		&	2.					&	1		&	[property Changed]	\\
+%		&	3.					&	Più di 1	&	[property Changed]	\\
+%		&	Cancellazioni (ccan)			&			&				\\
+%		&	1.					&	0		&	[if Changed][property NoDel]\\
+%		&	2.					&	Almeno 1	&	[if Changed][property Del]\\
+%		&	Inserimenti (cins)			&			&				\\
+%		&	1.					&	0		&	[if Changed][property NoIns]\\
+%		&	2.					&	Almeno 1	&	[if Changed][property Ins]\\
+%		&	Messaggio (cmes)			&			&				\\
+%		&	1.					&	Vuoto		&	[if Changed][property NoMsg]\\
+%		&	2.					&	Non vuoto	&	[if Changed][property Msg]\\
+%\hline
+%Periodo di tempo	&					&			&				\\
+%		&	Tipologia (pclass)			&			&				\\
+%		&	1.					&	Tempo		&	[property Time]		\\
+%		&	2.					&	Cambiamenti	&	[property Changes]	\\
+%		&	3.					&	Burst		&	[property Burst]	\\
+%		&	4.					&	Altro		&	[error]			\\
+%		&	Tipo (ptype)				&			&				\\
+%		&	1.					&	Non numerico	&	[if not Burst][error]	\\
+%		&	2.					&	Numerico	&	[if not Burst]		\\
+%		&	Lunghezza (plun)			&			&				\\
+%		&	1.					&	$\leq 0$	&	[error]			\\
+%		&	2.					&	$> 0$		&				\\
+%		&	3.					&	$> esistenza del sistema$ & 	[if Time][error]\\
+%		&	4.					&	$> cambiamenti totali$	&	[if Changes][error]\\
+%\hline
+%\end{tabular}
 
 \vspace{1cm}
 
