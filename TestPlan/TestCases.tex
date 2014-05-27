@@ -1,2 +1,46 @@
 \chapter{Casi di test}
 Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. Il metodo scelto ha numerosi limiti, ma, tuttavia, è il più semplice da applicare. Analizzare le condizioni limite consentirà di effettuare un test più affidabile.
+
+\paragraph{Specifica test formale\\}
+
+\begin{tabular}{lll}
+x		&								&									\\
+1.		&	0							&	[error]							\\
+2.		&	1							&	[property stringok, length1]	\\
+3.		&	2-19						&	[property stringok, midlength]	\\
+4.		&	20							&	[property stringok, length20]	\\
+5.		&	21							&	[error]							\\
+		&								&									\\
+a		&								&									\\
+1.		&	Length 1					&	[if stringok and length1]		\\
+2.		&	Length 2-19 				&	[if stringok and midlength]		\\
+3.		&	Length 20					&	[if stringok and length20]		\\
+		&								&									\\
+c		&								&									\\
+1.		&	At first position in string	&	[if stringok]					\\
+2.		&	At last position in string	&	[if stringok and not length1]	\\
+3.		&	In middle of string			&	[if stringok and not length1]	\\
+4.		&	Not in string				&	[if stringok]					\\
+\end{tabular}
+
+\vspace{1cm}
+
+		\newcolumntype{C}[1]{>{\centering}p{#1}}
+		\begin{table}[ht]
+		\centering
+			\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+				\hline
+				\rowcolor{Gray}
+				\textbf{Codice} & \textbf{Combinazione} & \textbf{Esito}\tabularnewline
+				\hline
+				TC 0.01 		& vpiv1 				& errore \tabularnewline
+				\hline
+				TC 0.02 		& vpiv1vcp1				& errore \tabularnewline
+				\hline
+				TC 0.03 		& vpiv2vcp2vcb1 		& errore \tabularnewline
+				\hline
+				TC 0.04 		& vpiv2vcp2vcb2 		& parsing \tabularnewline
+				\hline
+			\end{tabular}
+		\label{Test Case Parsing Field}
+		\end {table}
