@@ -1,16 +1,16 @@
 \chapter{Approccio}
-Nella sessione di testing di RepoMinerEvo verrà utilizzato un approccio di tipo ``Category Partition'', che prevede che i test vengano effettuati in maniera da non scendere nei dettagli del codice, ma basandosi sulle specifiche delle funzionalità da testare.\\
-L’approccio alla fase di testing si compone di tre fasi:\\
+Nella sessione di testing di RepoMinerEvo verrà utilizzato un approccio di tipo ``Category Partition'', che permette di avere un sottoinsieme intelligente dei casi di test ottenibili attraverso SECT (Strong Equivalence Class Testing). Si cercherà di minimizzare le scelte delle categorie (selezionando solo quelle ritenute necessarie), in modo da evitare l'esplosione combinatorica dei casi di test.\\
+Il testig si dividerà in tre fasi distinte:\\
 \begin{itemize}
 \item Testing di unità, che controlla i singoli componenti (classi, metodi)\\
-\item Testing di integrazione, che va a testare l'integrazione dei vari sottosistemi\\
-\item Testing funzionale: test funzionale, che andrà a verificare la funzionalità dell’intero sistema assemblato.\\
+\item Testing di integrazione, che controlla che i singoli sottosistemi si integrino correttamente nel sistema finale\\
+\item Testing funzionale, che andrà a verificare la funzionalità dell’intero sistema assemblato\\
 \end{itemize}
 \section{Testing di unità}
 Con il testing di unità verrà effettuato un controllo delle varie classi e metodi del sistema, quindi saranno ricercate le condizioni di fallimento andando ad evidenziare gli errori. Il testing di unità, sarà eseguito dal team di sviluppo attraverso l’implementazione di classi di test utilizzando il framework JUnit. In particolare, per ogni classe che esegue operazioni complesse sarà sviluppata la relativa classe JUnit. Quindi, tutte le classi Entity e le classi Manager dovranno avere una corrispettiva classe di test.\\
 
 \section{Testing di integrazione}
-Con il testing di integrazione si effettuerà un controllo sull’integrazione delle varie componenti del sistema. Si adotterà una strategia di tipo “Bottom-up”. Per effettuare questi test di integrazione, spesso saranno necessari l’utilizzo di driver dato che tale strategia va ad integrare passo passo i sottosistemi partendo dal layer che si trova più in basso nella scala gerarchica.\\
+Con il testing di integrazione si effettuerà un controllo sull’integrazione delle varie componenti del sistema. Si adotterà una strategia di tipo ``Big-bang'': dato che le componenti da integrare sono poche, non ha senso scegliere strategie complesse di integrazione.\\
 
 \section{Testing funzionale}
-Con il testing di sistema verrà effettuato un controllo della correttezza dell’intero sistema.  E’ da considerare il testing più critico, in quanto può risultare molto complesso andare alla ricerca di eventuali errori, essendo impegnati tutti i sottosistemi. Questo test sarà effettuato utilizzando il framework Selenium, che mette a disposizione strumenti per il controllo di sistemi web-based.
+Con il testing di sistema verrà effettuato un controllo della correttezza dell’intero sistema. Questo test sarà effettuato manualmente dai componenti del team di testing.
