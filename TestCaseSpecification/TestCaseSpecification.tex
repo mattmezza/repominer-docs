@@ -1,19 +1,43 @@
-\chapter{Specifica dei casi di test}
+\chapter{Test Case}
 
-\begin{tabular}{ll}
-\hline
-\multicolumn{2}{l}{ \textbf{Test Frame:} }							\\
+\section{Metrica per il calcolo del numero di revisioni del sistema}
+\subsection{Esempio Test Case 1}
+\begin{table}[ht]
+\begin{tabular}{|l|l|}
 \hline
 Test Case 1.1:				&	{Key = cnum1.}						\\
-Insieme dei cambiamenti:	&	List$<$Changes$>$ (vuota)			\\
-\multicolumn{2}{l}{ }												\\
-\multicolumn{2}{l}{ Comando per eseguire il test: }					\\
-\multicolumn{2}{l}{ L'utente seleziona l'opzione ``Calcola metrica numero di revisioni del sistema'' }			\\
-\multicolumn{2}{l}{ }												\\
-\multicolumn{2}{l}{ Istruzioni per la verifica del test: }			\\
-\multicolumn{2}{l}{ Dovrebbe apparire il seguente output: }			\\
-\multicolumn{2}{l}{ ``Nessun cambiamento nel sistema.'' }			\\
+\hline
+Insieme dei cambiamenti:	&	List$<$Changes$>$					\\
+\hline
+\multicolumn{2}{|l|}{ Comando per eseguire il test: }					\\
+\multicolumn{2}{|p{13cm}|}{ L'utente seleziona l'opzione ``Calcola metrica numero di revisioni del sistema'' }			\\
+\hline
+\multicolumn{2}{|l|}{ Risultato atteso: }			\\
+\multicolumn{2}{|p{13cm}|}{ ``Nessun cambiamento nel sistema'' }			\\
 \hline
 \end{tabular}
+\end{table}
+\subsection{Esempio Test Case 2}
+\begin{table}[ht]
+\begin{tabular}{|p{4cm}|p{9cm}|}
+\hline
+\rowcolor{lightgray}Codice	&	TC 1.2								\\
+\hline
+Combinazione				&	cnum2								\\
+\hline
+Parametro					&	Insieme dei cambiamenti				\\
+\hline
+Categoria					&	Numero								\\
+\hline
+Scelta						&	List$<$Changes$>$					\\
+\hline
+Comando						&										\\
+\hline
+Risultato atteso 			&	``Nessun cambiamento nel sistema''	\\
+\hline
+Risultato attuale 			&	ERROR								\\
+\hline
+\end{tabular}
+\end{table}
 
 \clearpage
