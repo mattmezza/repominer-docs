@@ -7,7 +7,8 @@ Il testig si dividerà in tre fasi distinte:\\
 \item Testing funzionale, che andrà a verificare la funzionalità dell’intero sistema assemblato\\
 \end{itemize}
 \section{Testing di unità}
-Con il testing di unità verrà effettuato un controllo delle varie classi e metodi del sistema, quindi saranno ricercate le condizioni di fallimento andando ad evidenziare gli errori. Il testing di unità, sarà eseguito dal team di sviluppo attraverso l’implementazione di classi di test utilizzando il framework JUnit. In particolare, per ogni classe che esegue operazioni complesse sarà sviluppata la relativa classe JUnit. Quindi, tutte le classi Entity e le classi Manager dovranno avere una corrispettiva classe di test.\\
+Con il testing di unità verrà effettuato un controllo delle varie classi e metodi del sistema, quindi saranno ricercate le condizioni di fallimento andando ad evidenziare gli errori. Il testing di unità, sarà eseguito dal team di sviluppo attraverso l’implementazione di classi di test utilizzando il framework JUnit. In particolare, per ogni classe che esegue operazioni complesse sarà sviluppata la relativa classe JUnit. Quindi, tutte le classi Manager dovranno avere una corrispettiva classe di test.\\
+Il team di testing, inoltre, provvederà alla creazione di file SQL in grado di popolare il database simulando il sistema RepoMiner. Nello specifico, sarà scritto un file SQL per ogni progetto di test individuato nel Test Case Specification.
 
 \section{Testing di integrazione}
 Con il testing di integrazione si effettuerà un controllo sull’integrazione delle varie componenti del sistema. Si adotterà una strategia di tipo ``Big-bang'': dato che le componenti da integrare sono poche, non ha senso scegliere strategie complesse di integrazione.\\
