@@ -402,11 +402,11 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	\multirow{2}{*}{Cancellazioni (ccan)}				& 1. Nessuna				&	[property NoDel]			\tabularnewline
 									\cline{2-3}
-									& 2. Almeno una				&	[if Changed][property Del]		\tabularnewline
+									& 2. Almeno una				&	[if Changed and Text][property Del]		\tabularnewline
 	\hline
 	\multirow{2}{*}{Inserimenti (cins)}				& 1. Nessuno				&	[if NoChanged or Del]			\tabularnewline
 									\cline{2-3}
-									& 2. Almeno una				&	[if Changed]				\tabularnewline
+									& 2. Almeno una				&	[if Changed and Vers and Text] 		\tabularnewline
 									
 	\hline
 	
@@ -428,37 +428,25 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 6.4			& fnum1cnum2ccan2cins2					& ok \tabularnewline
 	\hline
-	TC 6.5			& fnum2ftype1fver1cnum1ccan1cins1		& ok \tabularnewline
+	TC 6.5			& fnum2ftype1fver1cnum1ccan1cins1			& ok \tabularnewline
 	\hline
-	TC 6.6			& fnum2ftype1fver1cnum2ccan1cins2		& ok \tabularnewline
+	TC 6.6			& fnum2ftype1fver1cnum2ccan1cins2			& ok \tabularnewline
 	\hline
-	TC 6.7			& fnum2ftype1fver1cnum2ccan2cins1		& ok \tabularnewline
+	TC 6.7			& fnum2ftype1fver1cnum2ccan2cins1			& ok \tabularnewline
 	\hline
-	TC 6.8			& fnum2ftype1fver1cnum2ccan2cins2		& ok \tabularnewline
+	TC 6.8			& fnum2ftype1fver1cnum2ccan2cins2			& ok \tabularnewline
 	\hline
-	TC 6.9			& fnum2ftype1fver2cnum1ccan1cins1		& ok \tabularnewline
+	TC 6.9			& fnum2ftype1fver2cnum1ccan1cins1			& ok \tabularnewline
 	\hline
-	TC 6.10			& fnum2ftype1fver2cnum2ccan1cins2		& ok \tabularnewline
+	TC 6.10			& fnum2ftype1fver2cnum2ccan2cins1			& ok \tabularnewline
 	\hline
-	TC 6.11			& fnum2ftype1fver2cnum2ccan2cins1		& ok \tabularnewline
+	TC 6.11			& fnum2ftype2fver1cnum1					& ok \tabularnewline
 	\hline
-	TC 6.12			& fnum2ftype1fver2cnum2ccan2cins2		& ok \tabularnewline
+	TC 6.12			& fnum2ftype2fver1cnum2					& ok \tabularnewline
 	\hline
-	TC 6.13			& fnum2ftype2fver1cnum1ccan1cins1		& ok \tabularnewline
+	TC 6.13			& fnum2ftype2fver2cnum1					& ok \tabularnewline
 	\hline
-	TC 6.14			& fnum2ftype2fver1cnum2ccan1cins2		& ok \tabularnewline
-	\hline
-	TC 6.15			& fnum2ftype2fver1cnum2ccan2cins1		& ok \tabularnewline
-	\hline
-	TC 6.16			& fnum2ftype2fver1cnum2ccan2cins2		& ok \tabularnewline
-	\hline
-	TC 6.17			& fnum2ftype2fver2cnum1ccan1cins1		& ok \tabularnewline
-	\hline
-	TC 6.18			& fnum2ftype2fver2cnum2ccan1cins2		& ok \tabularnewline
-	\hline
-	TC 6.19			& fnum2ftype2fver2cnum2ccan2cins1		& ok \tabularnewline
-	\hline
-	TC 6.20			& fnum2ftype2fver2cnum2ccan2cins2		& ok \tabularnewline
+	TC 6.14			& fnum2ftype2fver2cnum2					& ok \tabularnewline
 	\hline
 \end{tabular}
 \clearpage
@@ -532,7 +520,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 
 
 
-\subsection{Numero di cambiamenti totali di ogni file di un dato progetto}
+\subsection{Numero di cambiamenti totali di ogni file di un dato progetto (inserimento di feature)}
 		
 \begin{tabular}{|p{4cm}|p{4cm}p{5cm}|}
 	\hline
@@ -566,11 +554,11 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	\multirow{2}{*}{Cancellazioni (ccan)} 	& 1. Zero	 				&	[property NoDel] 				\tabularnewline
 	\cline{2-3}
-											& 2. Almeno uno				&	[if Changed][property Del]		\tabularnewline
+											& 2. Almeno uno				&	[if Changed and Text][property Del]		\tabularnewline
 	\hline
-	\multirow{2}{*}{Inserimenti (cins)} 	& 1. Zero 					&	[property NoIns] 				\tabularnewline
+	\multirow{2}{*}{Inserimenti (cins)} 	& 1. Zero 					&	[if NoChanged or Del][property NoIns] 				\tabularnewline
 	\cline{2-3}
-											& 2. Almeno uno 			&	[if Changed][property Ins]		\tabularnewline
+											& 2. Almeno uno 			&	[if Changed and Vers and Text][property Ins]		\tabularnewline
 	\hline
 	\multirow{2}{*}{Messaggio (cmes)} 		& 1. Vuoto 					&	[if Changed][property NoMsg] 	\tabularnewline
 	\cline{2-3}
@@ -586,79 +574,53 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\rowcolor{Gray}
 	\textbf{Codice} & \textbf{Combinazione} & \textbf{Esito}\tabularnewline
 	\hline
-	TC 8.1			& fnum1cnum1ccan1cins1cmes1					& ok \tabularnewline
+	TC 8.1			& fnum1cnum1ccan1cins1						& ok \tabularnewline
 	\hline
-	TC 8.2			& fnum1cnum2ccan1cins1cmes1					& ok \tabularnewline
+	TC 8.2			& fnum1cnum2ccan2cins1cmes1					& ok \tabularnewline
 	\hline
-	TC 8.3			& fnum1cnum2ccan2cins1cmes1					& ok \tabularnewline
+	TC 8.3			& fnum1cnum2ccan1cins2cmes1					& ok \tabularnewline
 	\hline
-	TC 8.4			& fnum1cnum2ccan1cins2cmes1					& ok \tabularnewline
+	TC 8.4			& fnum1cnum2ccan2cins2cmes1					& ok \tabularnewline
 	\hline
-	TC 8.5			& fnum1cnum2ccan2cins2cmes1					& ok \tabularnewline
+	TC 8.5			& fnum1cnum2ccan1cins1cmes2					& ok \tabularnewline
 	\hline
-	TC 8.6			& fnum1cnum2ccan1cins1cmes2					& ok \tabularnewline
+	TC 8.6			& fnum1cnum2ccan2cins1cmes2					& ok \tabularnewline
 	\hline
-	TC 8.7			& fnum1cnum2ccan2cins1cmes2					& ok \tabularnewline
+	TC 8.7			& fnum1cnum2ccan1cins2cmes2					& ok \tabularnewline
 	\hline
-	TC 8.8			& fnum1cnum2ccan1cins2cmes2					& ok \tabularnewline
+	TC 8.8			& fnum1cnum2ccan2cins2cmes2					& ok \tabularnewline	
 	\hline
-	TC 8.9			& fnum1cnum2ccan2cins2cmes2					& ok \tabularnewline	
+	TC 8.9			& fnum2ftype1fver1cnum1ccan1cins1				& ok \tabularnewline
 	\hline
-	TC 8.10			& fnum2ftype1fver1cnum1ccan1cins1		& ok \tabularnewline
+	TC 8.10			& fnum2ftype1fver1cnum2ccan1cins2cmes1				& ok \tabularnewline
 	\hline
-	TC 8.11			& fnum2ftype1fver1cnum2ccan1cins2cmes1		& ok \tabularnewline
+	TC 8.11			& fnum2ftype1fver1cnum2ccan2cins1cmes1				& ok \tabularnewline
 	\hline
-	TC 8.12			& fnum2ftype1fver1cnum2ccan2cins1cmes1		& ok \tabularnewline
+	TC 8.12			& fnum2ftype1fver1cnum2ccan2cins2cmes1				& ok \tabularnewline
 	\hline
-	TC 8.13			& fnum2ftype1fver1cnum2ccan2cins2cmes1		& ok \tabularnewline
+	TC 8.13			& fnum2ftype1fver1cnum2ccan1cins2cmes2				& ok \tabularnewline
 	\hline
-	TC 8.14			& fnum2ftype1fver2cnum1ccan1cins1		& ok \tabularnewline
+	TC 8.14			& fnum2ftype1fver1cnum2ccan2cins1cmes2				& ok \tabularnewline
 	\hline
-	TC 8.15			& fnum2ftype1fver2cnum2ccan1cins2cmes1		& ok \tabularnewline
+	TC 8.15			& fnum2ftype1fver1cnum2ccan2cins2cmes2				& ok \tabularnewline
 	\hline
-	TC 8.16			& fnum2ftype1fver2cnum2ccan2cins1cmes1		& ok \tabularnewline
+	TC 8.16			& fnum2ftype1fver2cnum1ccan1cins1				& ok \tabularnewline
 	\hline
-	TC 8.17			& fnum2ftype1fver2cnum2ccan2cins2cmes1		& ok \tabularnewline
+	TC 8.17			& fnum2ftype1fver2cnum2ccan2cins1cmes1				& ok \tabularnewline
 	\hline
-	TC 8.18			& fnum2ftype2fver1cnum1ccan1cins1		& ok \tabularnewline
+	TC 8.18			& fnum2ftype1fver2cnum2ccan2cins1cmes2				& ok \tabularnewline
 	\hline
-	TC 8.19			& fnum2ftype2fver1cnum2ccan1cins2cmes1		& ok \tabularnewline
+	TC 8.19			& fnum2ftype2fver1cnum1						& ok \tabularnewline
 	\hline
-	TC 8.20			& fnum2ftype2fver1cnum2ccan2cins1cmes1		& ok \tabularnewline
+	TC 8.20			& fnum2ftype2fver1cnum2cmes1					& ok \tabularnewline
 	\hline
-	TC 8.21			& fnum2ftype2fver1cnum2ccan2cins2cmes1		& ok \tabularnewline
+	TC 8.21			& fnum2ftype2fver1cnum2cmes2					& ok \tabularnewline
 	\hline
-	TC 8.22			& fnum2ftype2fver2cnum1ccan1cins1		& ok \tabularnewline
+	TC 8.22			& fnum2ftype2fver2cnum1						& ok \tabularnewline
 	\hline
-	TC 8.23			& fnum2ftype2fver2cnum2ccan1cins2cmes1		& ok \tabularnewline
+	TC 8.23			& fnum2ftype2fver2cnum2cmes1					& ok \tabularnewline
 	\hline
-	TC 8.24			& fnum2ftype2fver2cnum2ccan2cins1cmes1		& ok \tabularnewline
-	\hline
-	TC 8.25			& fnum2ftype2fver2cnum2ccan2cins2cmes1		& ok \tabularnewline
-	\hline
-	TC 8.26			& fnum2ftype1fver1cnum2ccan1cins2cmes2		& ok \tabularnewline
-	\hline
-	TC 8.27			& fnum2ftype1fver1cnum2ccan2cins1cmes2		& ok \tabularnewline
-	\hline
-	TC 8.28			& fnum2ftype1fver1cnum2ccan2cins2cmes2		& ok \tabularnewline
-	\hline
-	TC 8.29			& fnum2ftype1fver2cnum2ccan1cins2cmes2		& ok \tabularnewline
-	\hline
-	TC 8.30			& fnum2ftype1fver2cnum2ccan2cins1cmes2		& ok \tabularnewline
-	\hline
-	TC 8.31			& fnum2ftype1fver2cnum2ccan2cins2cmes2		& ok \tabularnewline
-	\hline
-	TC 8.32			& fnum2ftype2fver1cnum2ccan1cins2cmes2		& ok \tabularnewline
-	\hline
-	TC 8.33			& fnum2ftype2fver1cnum2ccan2cins1cmes2		& ok \tabularnewline
-	\hline
-	TC 8.34			& fnum2ftype2fver1cnum2ccan2cins2cmes2		& ok \tabularnewline
-	\hline
-	TC 8.35			& fnum2ftype2fver2cnum2ccan1cins2cmes2		& ok \tabularnewline
-	\hline
-	TC 8.36			& fnum2ftype2fver2cnum2ccan2cins1cmes2		& ok \tabularnewline
-	\hline
-	TC 8.37			& fnum2ftype2fver2cnum2ccan2cins2cmes2		& ok \tabularnewline
+	TC 8.24			& fnum2ftype2fver2cnum2cmes2					& ok \tabularnewline
 	\hline
 \end{tabular}
 \clearpage
