@@ -225,9 +225,16 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\rowcolor{Gray}
 	\textbf{Categoria}						& \textbf{Scelta}			&						\tabularnewline
 	\hline
-	\multirow{3}{*}{Numero (cnum)}					& 1. Nessuno				&	[property NoChanged] 			\tabularnewline
+	\multirow{2}{*}{Numero (cnum)}					& 1. Nessuno				&	[property NoChanged] 			\tabularnewline
 									\cline{2-3}
-									& 2. Uno o più				&	[property Changed]			\tabularnewline
+									& 2. Uno o più				&	[property Changed]		\tabularnewline
+	\multirow{3}{*}{Messaggio (cmes)} 				& 1. Vuoto 				&	[if Changed]		\tabularnewline
+									\cline{2-3}
+									& 2. Contiene parola bug-fix 		&	[if Changed]		\tabularnewline
+									\cline{2-3}
+									& 3. Non contiene parola bug-fix	&	[if Changed]		\tabularnewline
+	
+	\hline
 
 	\hline
 \end{tabular}
@@ -241,23 +248,43 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 4.1			& fnum1cnum1			& ok \tabularnewline
 	\hline
-	TC 4.2			& fnum1cnum2			& ok \tabularnewline
+	TC 4.2			& fnum1cnum2cmes1		& ok \tabularnewline
 	\hline
-	TC 4.3			& fnum2ftype1fver1cnum1		& ok \tabularnewline
+	TC 4.3			& fnum1cnum2cmes2		& ok \tabularnewline
 	\hline
-	TC 4.4			& fnum2ftype1fver1cnum2		& ok \tabularnewline
+	TC 4.4			& fnum1cnum2cmes3		& ok \tabularnewline
 	\hline
-	TC 4.5			& fnum2ftype1fver2cnum1		& ok \tabularnewline
+	TC 4.5			& fnum2ftype1fver1cnum1		& ok \tabularnewline
 	\hline
-	TC 4.6			& fnum2ftype1fver2cnum2		& ok \tabularnewline
+	TC 4.6			& fnum2ftype1fver2cnum1		& ok \tabularnewline
 	\hline
 	TC 4.7			& fnum2ftype2fver1cnum1		& ok \tabularnewline
 	\hline
-	TC 4.8			& fnum2ftype2fver1cnum2		& ok \tabularnewline
+	TC 4.8			& fnum2ftype2fver2cnum1		& ok \tabularnewline
 	\hline
-	TC 4.9			& fnum2ftype2fver2cnum1		& ok \tabularnewline
+	TC 4.9			& fnum2ftype1fver1cnum2cmes1	& ok \tabularnewline
 	\hline
-	TC 4.10			&fnum2ftype2fver2cnum2		& ok \tabularnewline
+	TC 4.10			& fnum2ftype1fver1cnum2cmes2	& ok \tabularnewline
+	\hline
+	TC 4.11			& fnum2ftype1fver1cnum2cmes3	& ok \tabularnewline
+	\hline
+	TC 4.12			& fnum2ftype1fver2cnum2cmes1	& ok \tabularnewline
+	\hline
+	TC 4.13			& fnum2ftype1fver2cnum2cmes2	& ok \tabularnewline
+	\hline
+	TC 4.14			& fnum2ftype1fver2cnum2cmes3	& ok \tabularnewline
+	\hline
+	TC 4.15			& fnum2ftype2fver1cnum2cmes1	& ok \tabularnewline
+	\hline
+	TC 4.16			& fnum2ftype2fver1cnum2cmes2	& ok \tabularnewline
+	\hline
+	TC 4.17			& fnum2ftype2fver1cnum2cmes3	& ok \tabularnewline
+	\hline
+	TC 4.18			& fnum2ftype2fver2cnum2cmes1	& ok \tabularnewline
+	\hline
+	TC 4.19			& fnum2ftype2fver2cnum2cmes2	& ok \tabularnewline
+	\hline
+	TC 4.20			& fnum2ftype2fver2cnum2cmes3	& ok \tabularnewline
 	\hline
 \end{tabular}
 \clearpage
