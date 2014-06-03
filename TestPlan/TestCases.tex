@@ -680,25 +680,19 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\rowcolor{Gray}
 	\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
 	\hline
-	\multirow{4}{*}{Tipologia (pclass)} 	& 1. Tempo 					&	[if Changed][property Time]				 	\tabularnewline
-	\cline{2-3}
-											& 2. Cambiamenti			&	[if Changed][property Changes]				\tabularnewline
-	\cline{2-3}
-											& 3. Burst 					&	[if Changed][property Burst]				\tabularnewline
-	\cline{2-3}
-											& 4. Altro 					&	[if Changed]error]							\tabularnewline
+	\multirow{2}{*}{Tipologia (pclass)} 	& 1. Tempo 					&	[if Changed]				 	\tabularnewline
+						\cline{2-3}
+						& 2. Altro 					&	[if Changed][error]							\tabularnewline
 	\hline
-	\multirow{2}{*}{Tipo (ptype)} 			& 1. Non numerico 			&	[if Changed and not Burst][error]		 	\tabularnewline
+	\multirow{2}{*}{Tipo (ptype)} 			& 1. Non numerico 			&	[if Changed][error]		 	\tabularnewline
 	\cline{2-3}
-											& 2. Numerico 				&	[if Changed and not Burst]					\tabularnewline
+											& 2. Numerico 				&	[if Changed]					\tabularnewline
 	\hline
-	\multirow{4}{*}{Lunghezza (plun)} 		& 1. $\leq 0$					&	[if Changed and NotBurst][error] 		\tabularnewline
+	\multirow{3}{*}{Lunghezza (plun)} 		& 1. $\leq 0$					&	[if Changed][error] 		\tabularnewline
 	\cline{2-3}
-											& 2. $>$ esistenza del sistema 	& 	[if Changed and Time][error]			\tabularnewline
+											& 2. $>$ esistenza del sistema 	& 	[if Changed][error]			\tabularnewline
 	\cline{2-3}
-											& 3. $>$ cambiamenti totali		&	[if Changed and Changes][error]			\tabularnewline
-	\cline{2-3}
-											& 4. Altro						&	[if Changed and NotBurst]				\tabularnewline
+											& 3. Altro						&			\tabularnewline
 	\hline
 \end{tabular}
 
@@ -717,105 +711,55 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 9.4			& fnum1cnum2pclass1ptype2plun2			& error \tabularnewline
 	\hline
-	TC 9.5			& fnum1cnum2pclass1ptype2plun4			& ok \tabularnewline
+	TC 9.5			& fnum1cnum2pclass1ptype2plun3			& ok \tabularnewline
 	\hline
-	TC 9.6			& fnum1cnum2pclass2ptype1			& error \tabularnewline
+	TC 9.6			& fnum1cnum2pclass2				& error \tabularnewline
 	\hline
-	TC 9.7			& fnum1cnum2pclass2ptype2plun1			& error \tabularnewline
+	TC 9.7			& fnum2ftype1fver1cnum2pclass1ptype1		& error \tabularnewline
 	\hline
-	TC 9.8			& fnum1cnum2pclass2ptype2plun3			& error \tabularnewline
+	TC 9.8			& fnum2ftype1fver1cnum2pclass1ptype2plun1	& error \tabularnewline
 	\hline
-	TC 9.9			& fnum1cnum2pclass2ptype2plun4			& ok \tabularnewline
+	TC 9.9			& fnum2ftype1fver1cnum2pclass1ptype2plun2	& error \tabularnewline
 	\hline
-	TC 9.10			& fnum1cnum2pclass3				& ok \tabularnewline
+	TC 9.10			& fnum2ftype1fver1cnum2pclass1ptype2plun3	& ok \tabularnewline
 	\hline
-	TC 9.11			& fnum1cnum2pclass4				& error \tabularnewline
+	TC 9.11			& fnum2ftype1fver1cnum2pclass2			& error \tabularnewline
 	\hline
-	TC 9.12			& fnum2ftype1fver1cnum2pclass1ptype1		& error \tabularnewline
+	TC 9.12			& fnum2ftype1fver2cnum1				& ok \tabularnewline
 	\hline
-	TC 9.13			& fnum2ftype1fver1cnum2pclass1ptype2plun1	& error \tabularnewline
+	TC 9.13			& fnum2ftype1fver2cnum2pclass1ptype1		& error \tabularnewline
 	\hline
-	TC 9.14			& fnum2ftype1fver1cnum2pclass1ptype2plun2	& error \tabularnewline
+	TC 9.14			& fnum2ftype1fver2cnum2pclass1ptype2plun1	& error \tabularnewline
 	\hline
-	TC 9.15			& fnum2ftype1fver1cnum2pclass1ptype2plun4	& ok \tabularnewline
+	TC 9.15			& fnum2ftype1fver2cnum2pclass1ptype2plun2	& error \tabularnewline
 	\hline
-	TC 9.16			& fnum2ftype1fver1cnum2pclass2ptype1		& error \tabularnewline
+	TC 9.16			& fnum2ftype1fver2cnum2pclass1ptype2plun3	& ok \tabularnewline
 	\hline
-	TC 9.17			& fnum2ftype1fver1cnum2pclass2ptype2plun1	& error \tabularnewline
+	TC 9.17			& fnum2ftype1fver2cnum2pclass2			& error \tabularnewline
 	\hline
-	TC 9.18			& fnum2ftype1fver1cnum2pclass2ptype2plun2	& error \tabularnewline
+	TC 9.18			& fnum2ftype2fver1cnum1				& ok \tabularnewline
 	\hline
-	TC 9.19			& fnum2ftype1fver1cnum2pclass2ptype2plun4	& ok \tabularnewline
+	TC 9.19			& fnum2ftype2fver1cnum2pclass1ptype1		& error \tabularnewline
 	\hline
-	TC 9.20			& fnum2ftype1fver1cnum2pclass3			& ok \tabularnewline
+	TC 9.20			& fnum2ftype2fver1cnum2pclass1ptype2plun1	& error \tabularnewline
 	\hline
-	TC 9.21			& fnum2ftype1fver1cnum2pclass4			& error \tabularnewline
+	TC 9.21			& fnum2ftype2fver1cnum2pclass1ptype2plun2	& error \tabularnewline
 	\hline
-	TC 9.22			& fnum2ftype1fver2cnum1				& ok \tabularnewline
+	TC 9.22			& fnum2ftype2fver1cnum2pclass1ptype2plun3	& ok \tabularnewline
 	\hline
-	TC 9.23			& fnum2ftype1fver2cnum2pclass1ptype1		& error \tabularnewline
+	TC 9.23			& fnum2ftype2fver1cnum2pclass2			& error \tabularnewline
 	\hline
-	TC 9.24			& fnum2ftype1fver2cnum2pclass1ptype2plun1	& error \tabularnewline
+	TC 9.24			& fnum2ftype2fver2cnum1				& ok \tabularnewline
 	\hline
-	TC 9.25			& fnum2ftype1fver2cnum2pclass1ptype2plun2	& error \tabularnewline
+	TC 9.25			& fnum2ftype2fver2cnum2pclass1ptype1		& error \tabularnewline
 	\hline
-	TC 9.26			& fnum2ftype1fver2cnum2pclass1ptype2plun4	& ok \tabularnewline
+	TC 9.26			& fnum2ftype2fver2cnum2pclass1ptype2plun1	& error \tabularnewline
 	\hline
-	TC 9.27			& fnum2ftype1fver2cnum2pclass2ptype1		& error \tabularnewline
+	TC 9.27			& fnum2ftype2fver2cnum2pclass1ptype2plun2	& error \tabularnewline
 	\hline
-	TC 9.28			& fnum2ftype1fver2cnum2pclass2ptype2plun1	& error \tabularnewline
+	TC 9.28			& fnum2ftype2fver2cnum2pclass1ptype2plun3	& ok \tabularnewline
 	\hline
-	TC 9.29			& fnum2ftype1fver2cnum2pclass2ptype2plun2	& error \tabularnewline
-	\hline
-	TC 9.30			& fnum2ftype1fver2cnum2pclass2ptype2plun4	& ok \tabularnewline
-	\hline
-	TC 9.31			& fnum2ftype1fver2cnum2pclass3			& ok \tabularnewline
-	\hline
-	TC 9.32			& fnum2ftype1fver2cnum2pclass4			& error \tabularnewline
-	\hline
-	TC 9.33			& fnum2ftype2fver1cnum1				& ok \tabularnewline
-	\hline
-	TC 9.34			& fnum2ftype2fver1cnum2pclass1ptype1		& error \tabularnewline
-	\hline
-	TC 9.35			& fnum2ftype2fver1cnum2pclass1ptype2plun1	& error \tabularnewline
-	\hline
-	TC 9.36			& fnum2ftype2fver1cnum2pclass1ptype2plun2	& error \tabularnewline
-	\hline
-	TC 9.37			& fnum2ftype2fver1cnum2pclass1ptype2plun4	& ok \tabularnewline
-	\hline
-	TC 9.38			& fnum2ftype2fver1cnum2pclass2ptype1		& error \tabularnewline
-	\hline
-	TC 9.39			& fnum2ftype2fver1cnum2pclass2ptype2plun1	& error \tabularnewline
-	\hline
-	TC 9.40			& fnum2ftype2fver1cnum2pclass2ptype2plun2	& error \tabularnewline
-	\hline
-	TC 9.41			& fnum2ftype2fver1cnum2pclass2ptype2plun4	& ok \tabularnewline
-	\hline
-	TC 9.42			& fnum2ftype2fver1cnum2pclass3			& ok \tabularnewline
-	\hline
-	TC 9.43			& fnum2ftype2fver1cnum2pclass4			& error \tabularnewline
-	\hline
-	TC 9.44			& fnum2ftype2fver2cnum1				& ok \tabularnewline
-	\hline
-	TC 9.45			& fnum2ftype2fver2cnum2pclass1ptype1		& error \tabularnewline
-	\hline
-	TC 9.46			& fnum2ftype2fver2cnum2pclass1ptype2plun1	& error \tabularnewline
-	\hline
-	TC 9.47			& fnum2ftype2fver2cnum2pclass1ptype2plun2	& error \tabularnewline
-	\hline
-	TC 9.48			& fnum2ftype2fver2cnum2pclass1ptype2plun4	& ok \tabularnewline
-	\hline
-	TC 9.49			& fnum2ftype2fver2cnum2pclass2ptype1		& error \tabularnewline
-	\hline
-	TC 9.50			& fnum2ftype2fver2cnum2pclass2ptype2plun1	& error \tabularnewline
-	\hline
-	TC 9.51			& fnum2ftype2fver2cnum2pclass2ptype2plun2	& error \tabularnewline
-	\hline
-	TC 9.52			& fnum2ftype2fver2cnum2pclass2ptype2plun4	& ok \tabularnewline
-	\hline
-	TC 9.53			& fnum2ftype2fver2cnum2pclass3			& error \tabularnewline
-	\hline
-	TC 9.54			& fnum2ftype2fver2cnum2pclass4			& error \tabularnewline
+	TC 9.29			& fnum2ftype2fver2cnum2pclass2			& error \tabularnewline
 	\hline
 \end{longtable}
 \clearpage
