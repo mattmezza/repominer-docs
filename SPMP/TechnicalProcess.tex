@@ -1,65 +1,21 @@
-\chapter{Technical Process}
-	
-			\section{Methods, tools and techniques}
-			
-			\begin{itemize}
-				
-				\item Google Code \\
-				There has been chosen for Google Code because it has some 
-				handy features:
-				
-				\begin{itemize}
-			 		\item Revision control system: Subversion in our case, see below.
-					\item Issue tracker
-					\item Wiki (is sometimes handy e.g. for meeting agenda).
-					\item File download server (for our software and document releases).
-				\end{itemize}
+\chapter{Piani tecnici di processo}
 
-				\item Subversion \\
-				This is a centralized version control system chosen for the 
-				following reasons:
-				
-				\begin{itemize}
-					\item It is easy to refactor the source code structure, 
-					while preserving files' history.
-					\item The whole repository has a single revision that is 
-					incremented after each commit.
-				\end{itemize}
+Per lo sviluppo del progetto si utilizzerà un Modello a Spirale: il processo di sviluppo sarà sottoposto in ogni sua fase al rispetto delle quattro task regions offerte da tale modello:
+\begin{itemize}
+ \item \textbf{Determinazione di obiettivi e alternative}: obiettivi specifici per la fase del progetto
+ \item \textbf{Valutazione delle alternative e dei rischi}: analisi dei rischi del progetto; si prendono precauzioni per ridurli o ridurne l’incidenza all’interno del progetto
+ \item \textbf{Sviluppo e convalida}: si implementano e si testano le funzionaltà previste
+ \item \textbf{Pianificazione}: viene revisionato il progetto e si decide se effettuare un nuovo giro di spirale
+\end{itemize}
 
-				\item Eclipse \\
-				Eclipse is a software development environment comprising an IDE and 
-				a plug-in system to extend it. It is used to develop applications in 
-				Java. It was decided to work with Eclipse because 
-				it has a very userfriendly interface and because of its popularity. Also it's 
-				known by most of the team members.
-				
-				\item \LaTeX \\
-				 \LaTeX{} has been chosen to document this project because it's 
-				internationally known and commonly used. Also, a few members 
-				were interested in learning this language.
-				
-			\end{itemize}	
-			
-			More specific tools will be discussed later.
-			
-			\section{Software documentation}
-			
-			Several documents will be publised during the execution of this project. \\
-			
-			\label{deadlines}
-				\begin{tabular}{l l}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm]{img/spirale.png} 
+\caption{Meta-modello di sviluppo a spirale}
+\label{spiralModel}
+\end{figure}
 
-					\FL Document & First version available on
-					\ML SPMP & October 26, 2009
-					\NN SCMP & November 9, 2009
-					\NN SRS & November 13, 2009
-					\NN SQAP & November 23, 2009
-					\NN SDD & November 27, 2009
-					\NN STD & December 07, 2009
-				\end{tabular}
-			
-			\section{Project support functions}
-			
-			Throughout the entire project, Joeri De Koster and Dirk Vermeir will 
-			be available for any help. For Wilma related problems, Dirk Van Deun 
-			can be contacted.
+La scelta è ricaduta su questo modello poiché esso rende esplicita la gestione dei rischi e permette di determinare eventuali errori in fasi iniziali.
+\paragraph{} In particolare si procederà con un'analisi generica del sistema da realizzare e, successivamente, si eseguiranno almeno due giri di spirale per implementare e testare le funzionalità incrementalmente aggiunte. Alla fine di ogni incremento il sistema deve implementare tutte le funzionalità definite per quel determinato incremento e dev'essere testato completamente.
+\paragraph{} La pianificazione del testing avverrà parallelamente rispetto al primo incremento, in modo che alla fine dell'implementazione delle prime funzionalità sia subito possibile partire con il testing e seguire il modello precedentemente descritto.
+\paragraph{} Per la specifica delle funzionalità da implementare ad ogni incremento si rimanda all'assegno, mentre per una descrizione approfondita delle stesse si veda il documento di analisi.
