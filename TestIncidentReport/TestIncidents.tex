@@ -1,0 +1,195 @@
+\chapter{Test Incidents}
+
+In questa sezione verranno indicati tutti i test incident. Si provvederà a fornire le seguenti informazioni per ogni caso di test:
+\begin{itemize}
+ \item Identificativo del caso di test (tracciabile nel Test Case Specification e nel Test Plan)
+ \item Risultato prodotto e risultato atteso
+ \item Input che ha portato alla failure
+ \item Note aggiuntive
+\end{itemize}
+
+Per visualizzare i risultati è sufficiente eseguire la query SQL descritta nella figura \ref{figmetpack}.
+\begin{figure}
+ \begin{lstlisting}
+  SELECT M.name, M.description, M1.value
+  FROM repominer.metrics AS M, repominer.package_metrics AS M1 
+  WHERE M.id = M1.metric
+  \end{lstlisting}
+  \caption{\footnotesize Query utilizzata per estrarre i valori relativi alle metriche di package}
+  \label{figmetpack}
+\end{figure}
+
+\newpage
+\section{Metrica per il calcolo del numero medio di volte in cui i file di un package hanno subito cambiamenti}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{| l | l | l |}
+		\hline
+		\rowcolor{lightgray}\textbf{Caso di test}	&	\textbf{Risultato atteso}	&	\textbf{Risultato ottenuto}	\\
+		\hline
+		TC 2.2						&	1				&	0			   	\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection*{TC 2.2}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Caricare il file ``Vuoto Versioning1.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Verrà mostrata la seguente tupla:
+\begin{table}[ht]
+ \centering
+ \footnotesize
+ \begin{tabular}{|l|p{8cm}|l|}
+  \hline
+  \textbf{name}		& \textbf{description}		& \textbf{value}		\\
+  \hline
+  mean\_NCHANGE		& Mean number of time in which files of a package have been modified	& 	0 \\
+  \hline
+ \end{tabular} 
+\end{table}
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Non ci sono file locali
+ \item È presente un solo cambiamento (cancellazione di un file)
+\end{itemize}
+
+
+
+\paragraph{Note} Il sistema non considera i cambiamenti su file che hanno subito cambiamenti ma che non sono più presenti in locale (perché cancellati).
+
+
+\newpage
+
+\section{Metrica per il calcolo del numero medio di bug-fix di un package}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{| l | l | l |}
+		\hline
+		\rowcolor{lightgray}\textbf{Caso di test}	&	\textbf{Risultato atteso}	&	\textbf{Risultato ottenuto}	\\
+		\hline
+		TC 4.16						&	1				&	0			   	\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection*{TC 4.16}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Caricare il file ``Bugfix4.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Verrà mostrata la seguente tupla:
+\begin{table}[ht]
+ \centering
+ \footnotesize
+ \begin{tabular}{|l|p{8cm}|l|}
+  \hline
+  \textbf{name}		& \textbf{description}		& \textbf{value}		\\
+  \hline
+  mean\_NFIX		& Mean number of time in which files of a package have been fixed for a bug	& 	0 \\
+  \hline
+ \end{tabular} 
+\end{table}
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item È presente un file locale
+ \item È presente un solo cambiamento
+ \item Il cambiamento in questione è un bugfix (messaggio: ``Bugfix'')
+\end{itemize}
+
+\paragraph{Note} Il sistema non identifica il cambiamento presente come bug-fix.
+\newpage
+
+
+
+\section{Metrica per il calcolo del numero di autori di commit di un package}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{| l | l | l |}
+		\hline
+		\rowcolor{lightgray}\textbf{Caso di test}	&	\textbf{Risultato atteso}	&	\textbf{Risultato ottenuto}	\\
+		\hline
+		TC 5.9						&	2				&	1			   	\\
+		\hline
+		TC 5.19						&	2				&	1			   	\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection*{TC 5.9}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Caricare il file ``Progetto9.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Verrà mostrata la seguente tupla:
+\begin{table}[ht]
+ \centering
+ \footnotesize
+ \begin{tabular}{|l|p{8cm}|l|}
+  \hline
+  \textbf{name}		& \textbf{description}		& \textbf{value}		\\
+  \hline
+  NAUTH		& Number of authors of changes made on a package	& 	1 \\
+  \hline
+ \end{tabular} 
+\end{table}
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Sono presenti due file locali
+ \item Sono presenti due cambiamenti
+ \item Gli autori dei cambiamenti sono diversi e non hanno indirizzo email
+\end{itemize}
+
+\paragraph{Note} Il sistema non considera il caso in cui un autore non ha indirizzo email.
+
+
+\subsection*{TC 5.19}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Caricare il file ``Progetto19.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Verrà mostrata la seguente tupla:
+\begin{table}[ht]
+ \centering
+ \footnotesize
+ \begin{tabular}{|l|p{8cm}|l|}
+  \hline
+  \textbf{name}		& \textbf{description}		& \textbf{value}		\\
+  \hline
+  NAUTH		& Number of authors of changes made on a package	& 	1 \\
+  \hline
+ \end{tabular} 
+\end{table}
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Sono presenti due file locali
+ \item Sono presenti due cambiamenti
+ \item Gli autori dei cambiamenti sono diversi e non hanno indirizzo email
+\end{itemize}
+
+\paragraph{Note} Il sistema non considera il caso in cui un autore non ha indirizzo email.
