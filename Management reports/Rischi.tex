@@ -1,0 +1,57 @@
+\chapter{Gestione dei rischi}
+\section{Evoluzione dei rischi}
+In questa sezione si analizza l'evoluzione dei rischi e come sono cambiate le probabilità che un determinato rischi si verifichi. 
+\\ \\
+\textbf{Legenda} \\ \\
+\textit{Probabilità}:
+\begin{itemize}
+\item \textit{Bassa}:la probabilità che il rischio si verifichi è compresa nell'intervallo 0\%-30\%.
+\item \textit{Media}:la probabilità che il rischio si verifichi è compresa nell'intervallo 30\%-60\%.
+\item \textit{Alta}:la probabilità che il rischio si verifichi è compresa nell'intervallo 60\%-100\%.
+\end{itemize}
+\textit{Impatto}:
+\begin{itemize}
+\item \textit{Insignificante}: il verificarsi del rischio non compromette la buona riuscita del progetto.
+\item \textit{Tollerabile}: classifica rischi di semplice gestione in quanto, le problematiche ad essi collegate, sono facilmente risolvibili.
+\item \textit{Serio}: rischi di questo tipo possono rallentare notevolmente il progetto mettendone a rischio la buona riuscita; è necessario risolverli nel più breve tempo possibile.
+\item \textit{Catastrofico}: rischi di difficile soluzione; se non affrontati per tempo portano di sicuro al fallimento.
+\end{itemize}
+
+\newcolumntype{C}[1]{>{\centering}p{#1}}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|C{4cm}|C{5cm}|C{3cm}|}
+\hline 
+\rowcolor{Gray}\textbf{Rischio} & \textbf{Variazione della probabilità} & \textbf{Impatto} \tabularnewline
+\hline 
+Skill del team insufficienti & Invariata: Bassa & Tollerabile \tabularnewline
+\hline
+Poca conoscenza del dominio applicativo & Variata: Bassa & Serio \tabularnewline
+\hline
+Perdita di un elemento del team & Invariata: Bassa & Tollerabile \tabularnewline
+\hline
+Ritardo consegna task & Invariata: Media & Tollerabile \tabularnewline
+\hline
+Implementazione non completa & Invariata: Bassa & Serio \tabularnewline
+\hline
+Attività prolungata oltre la scadenza prevista in fase di schedule & Invariata: Media & Serio \tabularnewline
+\hline
+Incontro settimanale annullato & Invariata: Bassa & Tollerabile \tabularnewline
+\hline
+\end{tabular}
+\caption{Identificazione dei rischi}
+\end{table}
+
+I rischi identificati in fase di pianificazione sono sostanzialmente rimasti invariati. Il rischio di non conoscere abbastanza il dominio applicativo si è quasi completamente azzerato, dato che il problema è stato studiato affondo. Il rischio di rilasciare il sistema in ritardo resta medio a causa dei problemi verificatisi con l'implementazione.
+
+\section{Rischi affrontati e strategie applicate}
+\begin{table}[ht]
+ \centering
+ \begin{tabular}{|p{4cm}|p{9cm}|}
+  \hline
+  \rowcolor{Gray}\textbf{Rischio}			& \textbf{Strategia applicata}\\
+  \hline
+  Ritardo consegna task					& Il problema non è dipeso da problemi di organizzazione interna bensì da imprevisti relativi al sistema esistente, quindi le strategie di prevenzione sono state inutili in questo caso. È stato necessario modificare lo schedule.\\
+  \hline
+ \end{tabular}
+\end{table}
