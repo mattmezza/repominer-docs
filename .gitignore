@@ -37,3 +37,6 @@
 *.hst
 *.ver
 *.pdf
+*.backup
+*.kilepr
+*.*~
