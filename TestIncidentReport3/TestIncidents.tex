@@ -1,0 +1,478 @@
+\chapter{Test Incidents}
+
+In questa sezione verranno indicati tutti i test incident. Si provvederà a fornire le seguenti informazioni per ogni caso di test:
+\begin{itemize}
+ \item Identificativo del caso di test (tracciabile nel Test Case Specification e nel Test Plan)
+ \item Risultato prodotto e risultato atteso
+ \item Input che ha portato alla failure
+ \item Note aggiuntive
+\end{itemize}
+
+Per visualizzare i risultati è sufficiente eseguire la query SQL descritta nella figura \ref{figmetpack}.
+\begin{figure}
+ \begin{lstlisting}
+  SELECT M.name, M.description, M1.value
+  FROM repominer.metrics AS M, repominer.project_metrics AS M1 
+  WHERE M.id = M1.metric
+  \end{lstlisting}
+  \caption{\footnotesize Query utilizzata per estrarre i valori relativi alle metriche di progetto}
+  \label{figmetpack}
+\end{figure}
+
+\newpage
+\section{Metrica per il calcolo dell'Extended Code Change model}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{| l | l | l |}
+		\hline
+		\rowcolor{lightgray}\textbf{Caso di test}	&	\textbf{Risultato atteso}	&	\textbf{Risultato ottenuto}	\\
+		\hline
+		TC 10.1						&	Messaggio di errore		&	Errore di sistema	   	\\
+		\hline
+		TC 10.4						&	0				&	Errore di sistema	   	\\
+		\hline
+		TC 10.10					&	0				&	Metrica non calcolata	   	\\
+		\hline
+		TC 10.14					&	0				&	Errore di sistema	   	\\
+		\hline
+		TC 10.20					&	0				&	Metrica non calcolata	   	\\
+		\hline
+		TC 10.22					&	Messaggio di errore		&	Errore di sistema	   	\\
+		\hline
+		TC 10.25					&	0				&	Errore di sistema	   	\\
+		\hline
+		TC 10.31					&	0				&	Metrica non calcolata	   	\\
+		\hline
+		TC 10.36					&	0				&	Errore di sistema	   	\\
+		\hline
+		TC 10.42					&	1				&	Metrica non calcolata	   	\\
+		\hline
+		TC 10.44					&	Messaggio di errore		&	Errore di sistema	   	\\
+		\hline
+		TC 10.47					&	0				&	Errore di sistema	   	\\
+		\hline
+		TC 10.53					&	0				&	Metrica non calcolata	   	\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection*{TC 10.1}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Vuoto.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Non ci sono file locali
+ \item Non sono presenti cambiamenti
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+\subsection*{TC 10.4}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Time based periods'' e scrivere all'interno della casella ``Period length'' il valore ``1000000000''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Vuoto Versioning3.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Non ci sono file locali
+ \item È presente un cambiamento (cancellazione di un file)
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\subsection*{TC 10.10}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Burst based period''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Vuoto Versioning3.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Non verrà mostrata una tupla in cui il campo ``nome'' ha valore ``ECC\_Model''
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Non ci sono file locali
+ \item È presente un solo cambiamento (cancellazione di un file)
+\end{itemize}
+
+
+
+
+
+\newpage
+
+
+
+
+
+\subsection*{TC 10.14}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Time based periods'' e scrivere all'interno della casella ``Period length'' il valore ``1000000000''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto9.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Sono presenti due file locali sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\subsection*{TC 10.20}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Burst based period''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto25.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Non verrà mostrata una tupla in cui il campo ``nome'' ha valore ``ECC\_Model''
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Ci sono 3 file locali sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+
+
+
+
+\newpage
+
+
+
+
+
+\subsection*{TC 10.22}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Time based period'' e scrivere all'interno della casella ``Period length'' il valore ``17''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto1.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item È presente un file locale
+ \item Non sono presenti cambiamenti
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+\subsection*{TC 10.25}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Time based periods'' e scrivere all'interno della casella ``Period length'' il valore ``1000000000''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto4.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item È presente un file locale non sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\subsection*{TC 10.31}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Burst based period''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto4.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Non verrà mostrata una tupla in cui il campo ``nome'' ha valore ``ECC\_Model''
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item È presente un file locale non sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+
+
+
+
+\newpage
+
+
+
+
+
+\subsection*{TC 10.36}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Time based periods'' e scrivere all'interno della casella ``Period length'' il valore ``1000000000''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto19.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Sono presenti due file sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\subsection*{TC 10.42}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Burst based period''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto19.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Non verrà mostrata una tupla in cui il campo ``nome'' ha valore ``ECC\_Model''
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Sono presenti due file locali sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+
+
+
+
+\newpage
+
+
+
+
+
+\subsection*{TC 10.44}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Time based period'' e scrivere all'interno della casella ``Period length'' il valore ``17''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto11.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item È presente un file locale non sotto versioning
+ \item Non sono presenti cambiamenti
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+\subsection*{TC 10.47}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Time based periods'' e scrivere all'interno della casella ``Period length'' il valore ``1000000000''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto14.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+\end{itemize}
+Il processo si interrompe e nel terminale di Eclipse (launcher) viene mostrato il messaggio di errore ``net.sf.jeasyorm.RuntimeSQLException: Error inserting entity''
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Sono presenti due file non sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+\paragraph{Note} Le informazioni presenti nel log dell'errore mostrano che questo potrebbe essere dovuto ad un problema con il salvataggio di una data.
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+\subsection*{TC 10.53}
+Passi da eseguire per arrivare alla failure:
+\begin{itemize}
+ \item Avviare Eclipse
+ \item Pulire il database
+ \item Aprire le impostazioni di Eclipse (Window/Preferences)
+ \item Selezionare ``History Metrics Preferences''
+ \item Selezionare l'opzione ``Burst based period''
+ \item Cliccare sul tasto ``Ok''
+ \item Caricare il file ``Progetto14.sql'' nella cartella ``sql'' del progetto
+ \item Cliccare sul tasto ``Calculate history metrics''
+ \item Eseguire la query che mostra i risultati per le metriche di package
+\end{itemize}
+Non verrà mostrata una tupla in cui il campo ``nome'' ha valore ``ECC\_Model''
+\vspace{0.5cm}
+\newline
+Il progetto di riferimento ha le seguenti caratteristiche:
+\begin{itemize}
+ \item Sono presenti due file non sotto versioning
+ \item Sono presenti due cambiamenti
+\end{itemize}
+
+
+
+
+
+\newpage
+
+
+
+
+
