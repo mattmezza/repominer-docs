@@ -1,5 +1,5 @@
 \chapter{Casi di test}
-Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. Il metodo scelto ha numerosi limiti, ma, tuttavia, è il più semplice da applicare. Analizzare le condizioni limite consentirà di effettuare un test più affidabile.
+Per sviluppare i test cases sarà utilizzato il metodo denominato Category Partition. Il metodo scelto consente di individuare semplicemente i casi di test ed evita che questi contengano combinazioni non coerenti (come WECT).
 
 \section{Specifica test}
 
@@ -669,7 +669,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\rowcolor{Gray}
 	\textbf{Categoria} 						& \textbf{Scelta}			&									\tabularnewline
 	\hline
-	\multirow{2}{*}{Numero (cnum)} 			& 1. Zero 					&	[property NoChanged]			\tabularnewline
+	\multirow{2}{*}{Numero (cnum)} 			& 1. Zero 					&	[property NoChanged][error]			\tabularnewline
 	\cline{2-3}
 											& 2. Uno o più				&	[property Changed]				\tabularnewline
 	\hline	
@@ -725,7 +725,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 9.11			& fnum2ftype1fver1cnum2pclass2			& error \tabularnewline
 	\hline
-	TC 9.12			& fnum2ftype1fver2cnum1				& ok \tabularnewline
+	TC 9.12			& fnum2ftype1fver2cnum1				& error \tabularnewline
 	\hline
 	TC 9.13			& fnum2ftype1fver2cnum2pclass1ptype1		& error \tabularnewline
 	\hline
@@ -737,7 +737,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 9.17			& fnum2ftype1fver2cnum2pclass2			& error \tabularnewline
 	\hline
-	TC 9.18			& fnum2ftype2fver1cnum1				& ok \tabularnewline
+	TC 9.18			& fnum2ftype2fver1cnum1				& error \tabularnewline
 	\hline
 	TC 9.19			& fnum2ftype2fver1cnum2pclass1ptype1		& error \tabularnewline
 	\hline
@@ -749,7 +749,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 9.23			& fnum2ftype2fver1cnum2pclass2			& error \tabularnewline
 	\hline
-	TC 9.24			& fnum2ftype2fver2cnum1				& ok \tabularnewline
+	TC 9.24			& fnum2ftype2fver2cnum1				& error \tabularnewline
 	\hline
 	TC 9.25			& fnum2ftype2fver2cnum2pclass1ptype1		& error \tabularnewline
 	\hline
@@ -793,7 +793,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\rowcolor{Gray}
 	\textbf{Categoria}						& \textbf{Scelta}			&						\tabularnewline
 	\hline
-	\multirow{3}{*}{Numero (cnum)}					& 1. Nessuno				&	[property NoChanged] 			\tabularnewline
+	\multirow{3}{*}{Numero (cnum)}					& 1. Nessuno				&	[property NoChanged][error] 			\tabularnewline
 									\cline{2-3}
 									& 2. Uno o più				&	[property Changed]			\tabularnewline
 	\hline
@@ -874,7 +874,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 10.21			& fnum2ftype1fver1cnum2pclass4			& error \tabularnewline
 	\hline
-	TC 10.22			& fnum2ftype1fver2cnum1				& ok \tabularnewline
+	TC 10.22			& fnum2ftype1fver2cnum1				& error \tabularnewline
 	\hline
 	TC 10.23			& fnum2ftype1fver2cnum2pclass1ptype1		& error \tabularnewline
 	\hline
@@ -896,7 +896,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 10.32			& fnum2ftype1fver2cnum2pclass4			& error \tabularnewline
 	\hline
-	TC 10.33			& fnum2ftype2fver1cnum1				& ok \tabularnewline
+	TC 10.33			& fnum2ftype2fver1cnum1				& error \tabularnewline
 	\hline
 	TC 10.34			& fnum2ftype2fver1cnum2pclass1ptype1		& error \tabularnewline
 	\hline
@@ -918,7 +918,7 @@ Per sviluppare i test cases sarà utilizzato il metodo del Category Partition. I
 	\hline
 	TC 10.43			& fnum2ftype2fver1cnum2pclass4			& error \tabularnewline
 	\hline
-	TC 10.44			& fnum2ftype2fver2cnum1				& ok \tabularnewline
+	TC 10.44			& fnum2ftype2fver2cnum1				& error \tabularnewline
 	\hline
 	TC 10.45			& fnum2ftype2fver2cnum2pclass1ptype1		& error \tabularnewline
 	\hline
