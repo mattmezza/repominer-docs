@@ -1,21 +1,47 @@
 \chapter{Impact Analysis}
 In questa sezione si presenterà una previsione dell'impatto che la modifica richiesta avrà sugli artefatti del sistema esistente. In particolar modo si cercherà di individuare le classi (codice sorgente) che dovranno essere modificate per integrare le funzionalità richieste.
 
-Per effettuare l'analisi è stato utilizzato il tool JRipples, grazie all'ausilio del quale è stato possibile (partendo da uno Starting Impact Set definito) scegliere tra un insieme ridotto di possibili classi impattate il Candidate Impact Set.
-
 \paragraph{}
-Dato che si propone di aggiungere nuove funzionalità alla struttura esistente e che queste non necessitano della modifica di funzionalità esistenti, si presume che l'impatto sul sistema esistente sarà scarso. 
+Dato che si è scelto di implementare un sistema ex novo le cui funzionalità andranno ad affiancare e integrare quelle del sistema esistente, a livello di codice sorgente l'impatto sarà pari a zero.
 
-In particolare, si presume che lo Starting Impact Set conterrà le seguenti classi:
+RepominerEvo andrà ad interagire con esso solamente al layer di gestione dei dati, in quanto andrà a utilizzare le informazioni estrapolate e memorizzate da Repominer per implementare nuove funzionalità. Si può ragionevolmente dedurre quindi che l'impatto sul sistema esistente andrà gestito unicamente a livello di database.
+
+Dato che dovranno essere implementate nuove metriche di natura più complessa ed articolata, si presume che sarà necessaria la modifica di alcune tabelle e di alcuni campi nel database esistente.
+\\
+
+Nella figura \ref{fig:sie} di pagina \pageref{fig:sie} riportiamo la relazioni e le tabelle più significative al momento corrente ai fini delle metriche da implementare.
+\\
+In particolare, ipotizziamo che lo Starting Impact Set conterrà la tabella:
 \begin{itemize}
-\item sie.parser.java.ClassMetricManager
-\item sie.parser.JavaExtractor
+\item metrics
+\end{itemize}
+Si è pensato, dovendo estendere le metriche già calcolate in Repominer con nuove metriche, distinte in metriche di pacchetto e metriche di progetto, di dover prevedere la creazione di due nuove tabelle: 
+\begin{itemize}
+\item package\_metrics
+\item project\_metrics
 \end{itemize}
 
-A seguito dell'analisi condotta con l'ausilio di JRipples, è stato individuato il seguente Candidate Impact Set:
+Nella figura \ref{fig:dettaglio} di pagina \pageref{fig:dettaglio} mostriamo le nuove relazioni ipotizzate che si verranno a creare. Si precisa che tali nuove relazioni non avranno alcuna influenza con la struttura del database preesistente.
+
+\begin{figure}[t]
+	\centering
+	%width=.5\textwidth
+	\includegraphics[width=.5\textwidth]{img/dettaglio.png}
+	\caption{Nuove tabelle}\label{fig:dettaglio}
+\end{figure}
+
+\begin{figure}[b]
+	\centering
+	%width=.5\textwidth
+	\includegraphics[width=\textwidth]{img/sieImportant.png}
+	\caption{Dettaglio del DB con le relazioni principali}\label{fig:sie}
+\end{figure}
+
+A seguito di un'analisi approfondita, è stato individuato il Candidate Impact Set nell'unica tabella: 
 \begin{itemize}
-\item sie.parser.java.ClassMetricManager
-\item sie.parser.JavaExtractor
+\item metrics
 \end{itemize}
+A seguito di tale analisi rimangono valide le considerazioni sopra esposte riguardo le nuove tabelle da creare e le relazioni da instaurare con \textit{metrics}.
+\\
 
 Una valutazione dettagliata dei risultati di questa analisi sarà presentata in un report separato dopo l'implementazione completa delle modifiche.
