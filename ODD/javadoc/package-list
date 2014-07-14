@@ -1,0 +1,11 @@
+it.unisa.sesa.repominer
+it.unisa.sesa.repominer.actions
+it.unisa.sesa.repominer.db
+it.unisa.sesa.repominer.db.entities
+it.unisa.sesa.repominer.dbscan
+it.unisa.sesa.repominer.metrics
+it.unisa.sesa.repominer.metrics.exception
+it.unisa.sesa.repominer.preferences
+it.unisa.sesa.repominer.preferences.exceptions
+it.unisa.sesa.repominer.util
+it.unisa.sesa.repominer.util.snippets
