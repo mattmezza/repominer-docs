@@ -1,10 +1,13 @@
 \documentclass[a4paper, 12pt, italian]{report}
 \usepackage{ctable}
+\usepackage{multirow}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
+\usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{xcolor,colortbl}
+\usepackage{longtable}
 \usepackage{amsmath}
-\usepackage{usecases}
 \usepackage[italian]{babel}
 
 \usepackage[raggedright]{titlesec}
@@ -12,6 +15,11 @@
 
 \titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
 \titlelabel{\thetitle.\quad}   % For consistency in all headings
+
+\definecolor{Gray}{gray}{0.8}
+\newcolumntype{a}{>{\columncolor{Gray}}p{.25\textwidth}}
+\newcolumntype{b}{>{\columncolor{Gray}}p{4cm}}
+
 
 \begin{document}
 \begin{titlepage}
@@ -22,7 +30,7 @@
 \textsc{\large Progetto di Ingegneria del Software II}\\[0.5cm]
 \textsc{\Large Repominer Evolution}\\[0.5cm] 
  \HRule \\[0.4cm]
-{ \large \bfseries Documento di manutenzione: analisi}\\[0.4cm] 
+{ \large \bfseries Test Log - Sistema}\\[0.4cm] 
 \HRule \\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -42,25 +50,20 @@ Prof. Andrea \textsc{De Lucia}
 \end{flushright}
 \end{minipage}\\[2.5cm]
 
-{\Large Documento di Manutenzione: analisi}\\
-Versione 1.0\\[1cm]
+{\Large TL}\\
+Versione 4.0\\[1cm]
 
-{\large 13 giugno 2014} % Date, change the \today to a set date if you want to be precise
+{\large 14/07/2014} % Date, change the \today to a set date if you want to be precise
 
 \vfill
 
-\end{titlepage}	
-       \input{Revision}
+\end{titlepage}		
+    \input{Revision}
 	\setcounter{tocdepth}{1}	
 	\tableofcontents
-	\listoffigures
 	
-	\input{Introduction}
-	\input{ProposedSystem}
-	\input{SystemModel}
-	%\input{ImpactAnalysis}
-	%\input{Glossary}
+	\input{Description}
+	\input{TestLog}
+	\input{TestResults}
 	
-\bibliography{bibliografia.bib}{}
-\bibliographystyle{plain}
 \end{document}

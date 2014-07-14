@@ -1,0 +1,9 @@
+Quando non ci sono cambiamenti, le metriche di progetto BCCM e ECCM devono ritornare 0 oppure non si possono calcolare?
+- Secondo il team di sviluppo le suddette non si possono calcolare in quanto, per determinare la probabilità di cambiamento per il singolo file (necessaria al calcolo del valore della metrica) occore effettuare una divisione per il numero di cambiamenti totali. Se questo numero è 0 tale probabilità non può essere calcolata.
+
+TC 10.53
+Nella fattispecie, l'algoritmo per la detection dei burst implementato prende in input due parametri interi, raggio e dimensione minima. Se i cambiamenti sono 2 e i parametri sono troppo alti (esempio 5 cambiamenti in 5 giorni) l'algoritmo non ricononsce alcun burst e di conseguenza non calcola alcuna metrica. Abbassando tale valore la metrica è correttamente calcolata.
+
+TC 10.31
+Come 10.53
+
