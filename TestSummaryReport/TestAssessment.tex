@@ -1,3 +1,7 @@
-\chapter{Valutazione dei test}
-L'utilizzo della tecnica di testing Category Partition ha permesso di ottenere un adeguato numero di test case in grado di trovare il maggior numero di failure del sistema.
-Alcuni di questi casi di test non sono risultati testabili poiché dopo aver implementato il menù delle preferenze di RepominerEvo, ci si è accorti che l'utente era vincolato a selezionare forzatamente uno dei 3 parametri, escludendo la possibiltà di poter selezionare altro.
+\chapter{Valutazione}
+\section{Valutazione dei casi di test}
+L'utilizzo del Category Partition ha permesso di ottenere un adeguato numero di test case in grado di trovare un buon numero di failure del sistema.
+Alcuni di questi casi di test non sono risultati testabili poiché, dopo aver implementato il menù delle preferenze di RepominerEvo, ci si è accorti che l'utente era vincolato a selezionare forzatamente uno dei 3 metodi per il calcolo dell'ECC, escludendo la possibiltà di poter selezionare altro; in ogni caso si ritiene che questi casi di test abbiano comunque esito negativo, dato che il risultato atteso sarebbe un messaggio di errore che, in realtà, viene solo anticipato, dimostrando che il sistema non permette di selezionare un altro metodo.
+
+\section{Valutazione della modalità di testing}
+La metodologia usata per testare il sistema (definita nel TP e nel TCS) ha permesso di velocizzare notevolmente l'attività di testing. Sebbene non sia ancora completamente automatizzata, la fase di testing di regressione richiede poche ore; per eventuali evoluzioni del sistema si potrebbe pensare ad un'automatizzazione totale del testing di sistema e di regressione.
