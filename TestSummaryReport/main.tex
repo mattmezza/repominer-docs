@@ -6,6 +6,12 @@
 \usepackage{amsmath}
 \usepackage[italian]{babel}
 
+\usepackage[raggedright]{titlesec}
+\usepackage{blindtext}
+
+\titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
+\titlelabel{\thetitle.\quad}   % For consistency in all headings
+
 \begin{document}
 \begin{titlepage}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
@@ -35,17 +41,17 @@ Prof. Andrea \textsc{De Lucia}
 \end{flushright}
 \end{minipage}\\[2.5cm]
 
-{\Large Test Summary Report}\\
-Versione 1.0\\[1cm]
+{\Large TSR}\\
+Versione 4.0\\[1cm]
 
-{\large \today} % Date, change the \today to a set date if you want to be precise
+{\large 13/07/2014} % Date, change the \today to a set date if you want to be precise
 
 \vfill
 
 \end{titlepage}		
      \input{Revision}
 	%\setcounter{tocdepth}{1}	
-	%\tableofcontents
+	\tableofcontents
 	\input{Introduction}
 	\input{TestSummary}
 	\input{TestAssessment}

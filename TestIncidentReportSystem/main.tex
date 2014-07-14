@@ -1,81 +1,20 @@
 \documentclass[a4paper, 12pt, italian]{report}
-
-\usepackage[italian]{babel}
-
-
-%%%%%%%% javadoc doclet http://doclet.github.io   %%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{blindtext}
-\usepackage{ifthen}
-\usepackage{ifpdf}
-\usepackage[headings]{fullpage}
-\ifpdf \usepackage[pdftex, pdfpagemode={UseOutlines},bookmarks,colorlinks,linkcolor={blue},plainpages=false,pdfpagelabels,citecolor={red},breaklinks=true]{hyperref}
-  \usepackage[pdftex]{graphicx}
-  \pdfcompresslevel=9
-  \DeclareGraphicsRule{*}{mps}{*}{}
-\else
-  \usepackage[dvips]{graphicx}
-\fi
-
-\newcommand{\entityintro}[3]{%
-  \hbox to \hsize{%
-    \vbox{%
-      \hbox to .2in{}%
-    }%
-    {\bf  #1}%
-    \dotfill\pageref{#2}%
-  }
-  \makebox[\hsize]{%
-    \parbox{.4in}{}%
-    \parbox[l]{5in}{%
-      \vspace{1mm}%
-      #3%
-      \vspace{1mm}%
-    }%
-  }%
-}
-\newcommand{\refdefined}[1]{
-\expandafter\ifx\csname r@#1\endcsname\relax
-\relax\else
-{$($in \ref{#1}, page \pageref{#1}$)$}\fi}
-\date{null}
-\chardef\textbackslash=`\\
-
-
-\usepackage{fullpage} 
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks=true,allcolors=blue,pdfpagemode=UseOutlines,pdfpagelayout=TwoPageRight
-}
-\usepackage{hypcap}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \usepackage{ctable}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
-%\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{color}
-\usepackage{listings}
-
-%tabella
-\usepackage{array}
+\usepackage{graphicx}
 \usepackage{xcolor,colortbl}
-\usepackage{booktabs}
-\usepackage{longtable}
-
+\usepackage{amsmath}
+\usepackage[italian]{babel}
 \usepackage[raggedright]{titlesec}
 \usepackage{blindtext}
+\usepackage{listings}
+
 
 \titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
-\titlelabel{\thetitle.\quad}   % For consistency in all headin
-
-\definecolor{Gray}{gray}{0.8}
-\newcolumntype{a}{>{\columncolor{Gray}}p{.25\textwidth}}
+\titlelabel{\thetitle.\quad}   % For consistency in all headings
 
 \begin{document}
-
 % === Per gli snippet =====================================
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -121,6 +60,7 @@ literate=
 }
 % === Fine ===================================================
 
+
 \begin{titlepage}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
 \center 
@@ -129,7 +69,7 @@ literate=
 \textsc{\large Progetto di Ingegneria del Software II}\\[0.5cm]
 \textsc{\Large Repominer Evolution}\\[0.5cm] 
  \HRule \\[0.4cm]
-{ \large \bfseries Object Design Document}\\[0.4cm] 
+{ \large \bfseries Test Incident Report - Sistema}\\[0.4cm] 
 \HRule \\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -149,25 +89,18 @@ Prof. Andrea \textsc{De Lucia}
 \end{flushright}
 \end{minipage}\\[2.5cm]
 
-{\Large Object Design Document}\\
-Versione 1.0\\[1cm]
+{\Large TIR}\\
+Versione 4.0\\[1cm]
 
-{\large 13 Luglio 2014} % Date, change the \today to a set date if you want to be precise
+{\large 14/07/2014} % Date, change the \today to a set date if you want to be precise
 
 \vfill
 
-\end{titlepage}	
-       \input{Revision}
+\end{titlepage}		
+	\input{Revision}
 	\setcounter{tocdepth}{1}	
 	\tableofcontents
-	\input{Introduzione}
-	\input{Lineeguida}
-	%\input{ClassInterface}
-	\input{Design}
-\input{ClassDiagram}
-\chapter{Interfaccia delle classi} {
-% 2. TeXDoclet output include
-\input{TeXDoclet}
-}
-	\input{Glossario}
+	
+	\input{Introduction}
+	\input{TestIncidents}
 \end{document}

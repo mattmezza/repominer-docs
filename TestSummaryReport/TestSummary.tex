@@ -5,15 +5,15 @@
 %Commenti addizionali: ???
 
 \section{System testing - Primo incremento}
-Sono state testate le metriche relative al primo incremento del sistema.
+Sono state testate le metriche relative al primo incremento del sistema, usando i casi di test specificati nel TCS nelle sezioni che vanno dalla 3.1 alla 3.7. In particolare sono state testate le seguenti metriche:
 \begin{itemize}
- \item Numero di revisioni del sistema.
- \item Numero medio di volte in cui i file di un package hanno subito cambiamenti.
- \item Numero medio di volte in cui i file di un package hanno subito operazioni di refactoring.
- \item Numero medio di volte in cui i file di un package hanno subito operazioni di bug fixing.
+ \item Numero di revisioni del sistema
+ \item Numero medio di volte in cui i file di un package hanno subito cambiamenti
+ \item Numero medio di volte in cui i file di un package hanno subito operazioni di refactoring
+ \item Numero medio di volte in cui i file di un package hanno subito operazioni di bug fixing
  \item Numero di autori di commit effettuati all’interno di un package
- \item Numero di linee aggiunte o rimosse (somma, media e massimo).
- \item Dimensione media dei file modificati.
+ \item Numero di linee aggiunte o rimosse (somma, media e massimo)
+ \item Dimensione media dei file modificati
 \end{itemize}
 \vspace{0.5cm}
 Tester:
@@ -22,25 +22,49 @@ Tester:
 \item Simone Scalabrino
 \end{itemize}
 Data test: 30/06/2014\\
-Risultati dei test: Solo il 4\% dei test case ha evidenziato failure del sistema.
+Risultati dei test: Solo il 4\% dei test case ha evidenziato failure del sistema.\\
+Il log di esecuzione di tutti i casi di test è TL 1.0. Gli errori sono riportati nel dettaglio nel TIR 1.0.
 
 \section{System testing - Secondo incremento}
-È stata testata la metrica relative al secondo incremento del sistema.
+È stata testata la metrica relativa al secondo incremento del sistema, usando i casi di test specificati nel TCS nella sezione 3.9:
 \begin{itemize}
- \item Metrica per il calcolo del Basic Code Change model.
+ \item Metrica per il calcolo del Basic Code Change model
 \end{itemize}
 Tester:
 \begin{itemize}
 \item Carlo Branca
 \item Simone Scalabrino
 \end{itemize}
-Data test: 02/07/2014\\
-Risultati dei test: Nessun caso di test case ha evidenziato failure del sistema.
+Data test: 01/07/2014\\
+Risultati dei test: Nessun caso di test case ha evidenziato failure del sistema.\\
+Il log di esecuzione di tutti i casi di test è TL 2.0.
 
 \section{System testing - Terzo incremento}
-È stata testata la metrica relative al terzo incremento del sistema.
+È stata testata la metrica relativa al secondo incremento del sistema, usando i casi di test specificati nel TCS nella sezione 3.10:
 \begin{itemize}
- \item Metrica per il calcolo del Extended Code Change model.
+ \item Metrica per il calcolo del Extended Code Change model
+\end{itemize}
+Tester:
+\begin{itemize}
+\item Carlo Branca
+\item Simone Scalabrino
+\end{itemize}
+Data test: 7/07/2014\\
+Risultati dei test: Il 26\% dei test case ha evidenziato failure del sistema.\\
+Il log di esecuzione di tutti i casi di test è TL 3.0. Gli errori sono riportati nel dettaglio nel TIR 3.0.
+
+\section{System testing finale}
+Sono state testate tutte le metriche implementate, usando tutti i casi di test specificati nel TCS (tranne quelli della sezione 3.8 destinati al testing di unità). La lista delle metriche testate è la seguente:
+\begin{itemize}
+ \item Numero di revisioni del sistema
+ \item Numero medio di volte in cui i file di un package hanno subito cambiamenti
+ \item Numero medio di volte in cui i file di un package hanno subito operazioni di refactoring
+ \item Numero medio di volte in cui i file di un package hanno subito operazioni di bug fixing
+ \item Numero di autori di commit effettuati all’interno di un package
+ \item Numero di linee aggiunte o rimosse (somma, media e massimo)
+ \item Dimensione media dei file modificati
+ \item Metrica per il calcolo del Basic Code Change model
+ \item Metrica per il calcolo del Extended Code Change model
 \end{itemize}
 Tester:
 \begin{itemize}
@@ -48,4 +72,5 @@ Tester:
 \item Simone Scalabrino
 \end{itemize}
 Data test: 13/07/2014\\
-Risultati dei test: Solo il 26\% dei test case ha evidenziato failure del sistema.
+Risultati dei test: ???\\
+Il log di esecuzione di tutti i casi di test è TL 4.0. Gli errori sono riportati nel dettaglio nel TIR 4.0.
