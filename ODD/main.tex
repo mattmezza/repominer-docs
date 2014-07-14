@@ -1,10 +1,61 @@
 \documentclass[a4paper, 12pt, italian]{report}
+
+\usepackage[italian]{babel}
+
+
+%%%%%%%% javadoc doclet http://doclet.github.io   %%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{blindtext}
+\usepackage{ifthen}
+\usepackage{ifpdf}
+\usepackage[headings]{fullpage}
+\ifpdf \usepackage[pdftex, pdfpagemode={UseOutlines},bookmarks,colorlinks,linkcolor={blue},plainpages=false,pdfpagelabels,citecolor={red},breaklinks=true]{hyperref}
+  \usepackage[pdftex]{graphicx}
+  \pdfcompresslevel=9
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\else
+  \usepackage[dvips]{graphicx}
+\fi
+
+\newcommand{\entityintro}[3]{%
+  \hbox to \hsize{%
+    \vbox{%
+      \hbox to .2in{}%
+    }%
+    {\bf  #1}%
+    \dotfill\pageref{#2}%
+  }
+  \makebox[\hsize]{%
+    \parbox{.4in}{}%
+    \parbox[l]{5in}{%
+      \vspace{1mm}%
+      #3%
+      \vspace{1mm}%
+    }%
+  }%
+}
+\newcommand{\refdefined}[1]{
+\expandafter\ifx\csname r@#1\endcsname\relax
+\relax\else
+{$($in \ref{#1}, page \pageref{#1}$)$}\fi}
+\date{null}
+\chardef\textbackslash=`\\
+
+
+\usepackage{fullpage} 
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,allcolors=blue,pdfpagemode=UseOutlines,pdfpagelayout=TwoPageRight
+}
+\usepackage{hypcap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{ctable}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage[italian]{babel}
 \usepackage{color}
 \usepackage{listings}
 
@@ -105,12 +156,16 @@ Versione 1.0\\[1cm]
 
 \vfill
 
-\end{titlepage}		
+\end{titlepage}	
        \input{Revision}
 	\setcounter{tocdepth}{1}	
 	\tableofcontents
 	\input{Introduzione}
 	\input{Lineeguida}
 	\input{ClassInterface}
+\chapter{Documentazione del codice} {
+% 2. TeXDoclet output include
+\input{TeXDoclet}
+}
 	\input{Glossario}
 \end{document}
