@@ -13,12 +13,12 @@ Nella figura \ref{fig:sie} di pagina \pageref{fig:sie} riportiamo la relazioni e
 \\
 In particolare, ipotizziamo che lo Starting Impact Set conterrà la tabella:
 \begin{itemize}
-\item metrics
+\item \textit{`metrics`}
 \end{itemize}
 Si è pensato, dovendo estendere le metriche già calcolate in Repominer con nuove metriche, distinte in metriche di pacchetto e metriche di progetto, di dover prevedere la creazione di due nuove tabelle: 
 \begin{itemize}
-\item package\_metrics
-\item project\_metrics
+\item \textit{`package\_metrics`}
+\item \textit{`project\_metrics`}
 \end{itemize}
 
 Nella figura \ref{fig:dettaglio} di pagina \pageref{fig:dettaglio} mostriamo le nuove relazioni ipotizzate che si verranno a creare. Si precisa che tali nuove relazioni non avranno alcuna influenza con la struttura del database preesistente.
@@ -27,21 +27,21 @@ Nella figura \ref{fig:dettaglio} di pagina \pageref{fig:dettaglio} mostriamo le 
 	\centering
 	%width=.5\textwidth
 	\includegraphics[width=.5\textwidth]{img/dettaglio.png}
-	\caption{Nuove tabelle}\label{fig:dettaglio}
+	\caption{Dettaglio delle relazioni da instaurare}\label{fig:dettaglio}
 \end{figure}
 
 \begin{figure}[b]
 	\centering
 	%width=.5\textwidth
 	\includegraphics[width=\textwidth]{img/sieImportant.png}
-	\caption{Dettaglio del DB con le relazioni principali}\label{fig:sie}
+	\caption{Schema relazionale del DB con le relazioni princpalmente interessate dall'analisi}\label{fig:sie}
 \end{figure}
 
 A seguito di un'analisi approfondita, è stato individuato il Candidate Impact Set nell'unica tabella: 
 \begin{itemize}
-\item metrics
+\item \textit{`metrics`}
 \end{itemize}
-A seguito di tale analisi rimangono valide le considerazioni sopra esposte riguardo le nuove tabelle da creare e le relazioni da instaurare con \textit{metrics}.
+A seguito di tale analisi rimangono valide le considerazioni sopra esposte riguardo le nuove tabelle da creare e le relazioni da instaurare con \textit{`metrics`}.
 \\
 
 Una valutazione dettagliata dei risultati di questa analisi sarà presentata in un report separato dopo l'implementazione completa delle modifiche.
