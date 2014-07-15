@@ -1,0 +1,6 @@
+\chapter{Valutazione del processo}
+Per poter valutare l'accuratezza del processo di impacty analysis esistono in letteratura diverse metriche. Nella nostra analisi utilizziamo le due metriche di \textit{recall} e \textit{precision}. Recall misura la parcentuale degli impatti reali inclusi nel Candidate Impact Sect, ossia il seguente rapporto
+$$|CIS \cap AIS|\over{|AIS|}$$
+La precision invece va a misurare la percentuale di impatti candidati che si sono manifestati come impatti reali. Il rapporto è
+$${|CIS \cap AIS|}\over{|CIS|}$$
+Fortunatamente, essendo l'impatto sul sistema esistente estremamente limitato e circoscritto solamente alla struttura del database, ci è stato possibile massimizzare entrambe le metriche. Nella fattispecie, il Discovered Impact Set si è rivelato vuoto così come il False Positive Impact Set. Dunque sia la recall che la precision sono pari a 1.
